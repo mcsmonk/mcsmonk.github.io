@@ -24,8 +24,8 @@ description              : "Personal blog"
 url                      : "https://mcsmonk.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/img/170927_me_taiwan.jpg"
-logo                     : # /assets/img/seminar.jpg
+teaser                   : "/assets/img/seminar.jpg"
+logo                     : "/assets/img/seminar.jpg"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -65,8 +65,8 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
+search                   : true # true, false (default)
+search_full_content      : true # true, false (default)
 search_provider          : # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
@@ -78,9 +78,9 @@ google:
   instant_search         : # false (default), true
 # SEO Related
 google_site_verification :
-bing_site_verification   :
+bing_site_verification   : "13D0B60645530DAB6959AA4264B19ADD"
 yandex_site_verification :
-naver_site_verification  :
+naver_site_verification  : "naver1bfcadbeb5d25ed63a3a09e27e7da9ae"
 
 # Social Sharing
 twitter:
@@ -111,7 +111,7 @@ author:
   avatar           : "/assets/img/170927_me_taiwan.jpg"
   bio              : "Learning by Doing ! / PhD student / Security, Cryptography, Side-Channel Analysis, Machine Learning"
   location         : "Republic of Korea"
-  email            :
+  email            : 
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -119,15 +119,15 @@ author:
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://mcsmonk.github.io"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/mcsmonk"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/nginsngin"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       url: "https://facebook.com/mcsmonk"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/mcsmonk"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/mcsmonk"

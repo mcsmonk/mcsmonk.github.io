@@ -1,9 +1,9 @@
 ---
 title:  "Iamroot16 History"
-#excerpt: "오늘은 백화점에 신발을 사러 갔다"
+#excerpt: "블라블라"
 
-header:
-  teaser: /assets/img/seminar.jpg
+#header:
+#  teaser: /assets/img/seminar.jpg
 
 permalink: /iamroot16/
 
@@ -213,41 +213,42 @@ Iamroot 16차 커널 스터디 기록용
     - device tree 의 structure block
         - 4바이트 읽어서 1,2,3 인지에 따라 BEGIN_NODE, END_NODE, PROP 결정  
     - zero length array in structure : a gcc extension  
-
-      > sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./arr0.c  
-      > #include \<stdio.h\>  
-      > typedef struct arr0 {  
-      >         char a;  
-      >         char b;  
-      >         char c[0];  
-      > } arr0;  
-      > int main(int argc, char *argv[])  
-      > {  
-      >         char a[6] = { 0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC };  
-      >         arr0 *aa = (arr0 *) a;  
-      >         printf("%p\n", &(aa->a));  
-      >         printf("%p\n", &(aa->b));  
-      >         printf("%p\n", &(aa->c));  
-      >         printf("%p\n", (aa->c+1));  
-      >         printf("aa->a    : %x\n", aa->a);  
-      >         printf("aa->b    : %x\n", aa->b);  
-      >         printf("aa->c[0] : %x\n", (unsigned char)*(aa->c+0));  
-      >         printf("aa->c[1] : %x\n", (unsigned char)*(aa->c+1));  
-      >         printf("aa->c[2] : %x\n", (unsigned char)*(aa->c+2));  
-      >         printf("aa->c[3] : %x\n", (unsigned char)*(aa->c+3));  
-      >         return 0;  
-      > }  
-      > sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ ./arr0  
-      > 0x7fffca8bb862  
-      > 0x7fffca8bb863  
-      > 0x7fffca8bb864  
-      > 0x7fffca8bb865  
-      > aa->a    : 12  
-      > aa->b    : 34  
-      > aa->c[0] : 56  
-      > aa->c[1] : 78  
-      > aa->c[2] : 9a  
-      > aa->c[3] : bc  
+      ```
+      sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./arr0.c
+      #include \<stdio.h\>
+      typedef struct arr0 {
+              char a;
+              char b;
+              char c[0];
+      } arr0;
+      int main(int argc, char *argv[])
+      {
+              char a[6] = { 0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC };
+              arr0 *aa = (arr0 *) a;
+              printf("%p\n", &(aa->a));
+              printf("%p\n", &(aa->b));
+              printf("%p\n", &(aa->c));
+              printf("%p\n", (aa->c+1));
+              printf("aa->a    : %x\n", aa->a);
+              printf("aa->b    : %x\n", aa->b);
+              printf("aa->c[0] : %x\n", (unsigned char)*(aa->c+0));
+              printf("aa->c[1] : %x\n", (unsigned char)*(aa->c+1));
+              printf("aa->c[2] : %x\n", (unsigned char)*(aa->c+2));
+              printf("aa->c[3] : %x\n", (unsigned char)*(aa->c+3));
+              return 0;
+      }
+      sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ ./arr0
+      0x7fffca8bb862
+      0x7fffca8bb863
+      0x7fffca8bb864
+      0x7fffca8bb865
+      aa->a    : 12
+      aa->b    : 34
+      aa->c[0] : 56
+      aa->c[1] : 78
+      aa->c[2] : 9a
+      aa->c[3] : bc
+      ```
 
 2. 의문점들
     - Q. Device tree 초기 세팅할 때, CRC32를 이용해 checksum을 계산해놓는데 왜 다른 해쉬함수를 사용하지 않는지 궁금함  
@@ -309,21 +310,23 @@ Iamroot 16차 커널 스터디 기록용
 1. early_fixmap_init (arch/arm64/mm/mmu.c)  
     - init_pg_dir, swapper_pg_dir 차이  
     - __VA_ARGS__ 동작 예제 코드
-      > sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./test.c  
-      > #include <stdio.h>  
-      > #define a1(x) printf("%d...a1\n", x);  
-      > #define a2(x) printf("%d...a2\n", x);  
-      > #define a(x,y,z,...) a##z(x)  
-      > #define aa(x,...) a(x, ##__VA_ARGS__, 1, 2)  
-      > int main()  
-      > {  
-      >         aa(5);  
-      >         aa(6, 1);  
-      >         return 0;  
-      > }  
-      > sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ ./test  
-      > 5...a2  
-      > 6...a1  
+      ```
+      sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./test.c
+      #include <stdio.h>
+      #define a1(x) printf("%d...a1\n", x);
+      #define a2(x) printf("%d...a2\n", x);
+      #define a(x,y,z,...) a##z(x)
+      #define aa(x,...) a(x, ##__VA_ARGS__, 1, 2)
+      int main()
+      {
+              aa(5);
+              aa(6, 1);
+              return 0;
+      }
+      sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ ./test
+      5...a2
+      6...a1
+      ```
 
 참고
 1. arm64/mm: Separate boot-time page tables from swapper_pg_dir
@@ -455,7 +458,7 @@ p[nr / \_\_BITS_PER_LONG]  |= 1UL << (nr % \_\_BITS_PER_LONG); // atomic하지 �
 > arch/arm64/kernel/head.S  
 > - __create_page_tables 완료  
 > - idmap_pg_dir 구조 예제 정리 그림  
-> ![fig-iamroot-kernel-001-idmap_pg_dir](/assets/img/figure/iamroot-kernel/191012-iamroot-kernel-001-idmap_pg_dir.png)  
+> ![fig-iamroot-kernel-001-idmap_pg_dir](/assets/img/iamroot16-kernel/191012-iamroot-kernel-001-idmap_pg_dir.png)  
 
 ## 14주차
 > 요약  
@@ -530,3 +533,12 @@ CISC-S 2019 발표로 인한 불참
 > 요약  
 > "코드로 알아보는 ARM 리눅스 커널"  
 > - 1장 ARMv8 아키텍처  
+
+1. 의문점들
+   - 용어
+      - 마이크로 아키텍처, TrustZone, Trusted Execution Environment
+   - ARMv7 AArch32 vs ARMv8 AArch32 차이
+   - ILP32, LP64, 리눅스 데이터 모델
+   - 함수 호출시 파라미터 몇개인지 체크하는 방법
+   - AAPCS64가 caller, callee에서 레지스터 나눠서 처리하게 하는 방식 사용하는 이유
+   - IRQ, FIQ 방식 차이
