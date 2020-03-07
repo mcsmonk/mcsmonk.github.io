@@ -43,6 +43,12 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
+200307 - 37주차 - 10명 - 한양대학교 퓨전테크센터 403호 세미나실
+
+~~200229 - 36주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실~~ - __코로나로 인한 원격회의 시도 및 실패__
+
+200222 - 35주차 - 14명 - 논현 인스페이스
+
 200215 - 34주차 - 14명 - 세종대학교 대양AI센터 B20
 
 200208 - 33주차 - 14명 - 한양대학교 퓨전테크센터 403호 세미나실
@@ -121,6 +127,50 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
+## 35주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - arm64_memblock_init (/arch/arm64/mm/init.c)  
+>      - reserve_crashkernel  
+>      - reserve_elfcorehdr  
+>      - dma_contiguous_reserve  
+>        - ...
+>          - cma_init_reserved_mem 진행 중  
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/arm64_memblock_init/
+    - http://jake.dothome.co.kr/reserve_crashkernel/
+2. Kernel Doc  
+    - https://www.kernel.org/doc/Documentation/kdump/kdump.txt
+
+## 36주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - arm64_memblock_init (/arch/arm64/mm/init.c)  
+>      - early_init_fdt_scan_reserved_mem (drivers/of/fdt.c))  
+
+## 35주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - arm64_memblock_init (/arch/arm64/mm/init.c)  
+>      - fdt_enforce_memory_region (/arch/arm64/mm/init.c)  
+>        - early_init_dt_scan_usablemem (/arch/arm64/mm/init.c)  
+>        - memblock_cap_memory_range (/mm/memblock.c)  
+>      - early_init_fdt_scan_reserved_mem (drivers/of/fdt.c)  
+>          - fdt_get_mem_rsv  
+>          - __fdt_scan_reserved_mem  
+>          - fdt_init_reserved_mem  
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/arm64_memblock_init/
+2. Kernel Doc  
+    - https://www.kernel.org/doc/Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt
+
 ## 34주차
 > 요약  
 > 1. 진행사항  
@@ -174,8 +224,6 @@ Iamroot 16차 커널 스터디 기록용
         1
         5
         ```
-2. 의문점들
-    - d
 
 참고
 0. Kernel patch commit message
@@ -197,12 +245,7 @@ Iamroot 16차 커널 스터디 기록용
 > start_kernel (init/main.c)  
 >  - setup_arch (arch/arm64/kernel/setup.c) 진행 중  
 >    - local_daif_restore (arch/arm64/include/asm/daifflags.h) 완료  
->      -  () 진행 중  
-
-1. 정리
-    - f
-2. 의문점들
-    - d
+>      -  진행 중  
 
 참고
 0. Kernel patch commit message
@@ -287,6 +330,9 @@ Iamroot 16차 커널 스터디 기록용
 
 1. 정리
     - fdt 관련 api 정리 필요
+    - Device tree
+      - The device tree framework source code is located in drivers/of/
+      - Code for manipulating the flattened device tree (FDT) is is scripts/dtc/libfdt
 2. 의문점들
     - dts,dtsi가 바이너리로 세팅되는 방법
 
@@ -295,6 +341,8 @@ Iamroot 16차 커널 스터디 기록용
     - http://jake.dothome.co.kr/dtb1/
     - http://jake.dothome.co.kr/dtb2/
     - http://jake.dothome.co.kr/dtb-fdt-api/
+2. etc
+    - https://elinux.org/Device_Tree_Linux
 
 ## 29주차
 > 요약  
