@@ -188,6 +188,36 @@ Iamroot 16차 커널 스터디 기록용
         500
         500
       ```
+    - 2
+    ```C
+        #include <stdio.h>
+        #include <stdint.h>
+        struct pgd_t{
+            uint64_t val;
+        };
+        static inline uint64_t pgd_val(struct pgd_t pgd){
+            return pgd.val;
+        }
+        uint64_t table[512] = {255,254,253};
+        int main(){
+            struct pgd_t *pgdp = table;
+            struct pgd_t pgd = *pgdp;
+            printf("%p\n", pgdp);
+            printf("%ld\n", pgd);
+            printf("%ld\n", pgd_val(pgd));
+            printf("%ld\n", pgd_val(*(pgdp+0)));
+            printf("%ld\n", pgd_val(*(pgdp+1)));
+            printf("%ld\n", pgd_val(*(pgdp+2)));
+        }
+    ```
+    ```bash
+        0x601060
+        255
+        255
+        255
+        254
+        253
+    ```
 
 참고
 1. 문C블로그  
