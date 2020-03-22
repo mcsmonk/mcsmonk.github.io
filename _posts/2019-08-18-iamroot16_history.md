@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-02-08T18:00:00-15:00
+last_modified_at: 2020-03-14T18:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -42,6 +42,10 @@ Iamroot 16차 커널 스터디 기록용
     6. GNU manual [link](http://www.gnu.org/manual/), korea [link](http://korea.gnu.org/manual/)
 
 # Records
+
+200307 - 39주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+
+200307 - 38주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실
 
 200307 - 37주차 - 10명 - 한양대학교 퓨전테크센터 403호 세미나실
 
@@ -127,7 +131,91 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 35주차
+## 39주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - paging_init (arch/arm64/mm/mmu.c)  
+>      - map_kernel  
+>        - map_kernel_segment  
+>      - map_mem  
+
+1. 정리
+    - swapper_pg_dir 세팅 하는 과정
+    - 이 과정 후에 init_pg_dir를 바꾸는 과정을 진행할 것으로 보임
+    - 타입 변환 및 구조체 참조 코드
+      ```C
+        #include <stdio.h>
+        #include <stdio.h>
+
+        typedef unsigned long u64;
+        typedef u64 pteval_t;
+        typedef struct { pteval_t pte; } pte_t;
+        #define pte_val(x)      ((x).pte)
+        #define __pte(x)        ((pte_t) { (x) } )
+
+        typedef u64 pgdval_t;
+        typedef struct { pgdval_t pgd; } pgd_t;
+        #define pgd_val(x)      ((x).pgd)
+        #define __pgd(x)        ((pgd_t) { (x) } )
+
+        static inline pte_t pgd_pte(pgd_t pgd)
+        {
+                return __pte(pgd_val(pgd));
+        }
+
+        int main()
+        {
+                pgd_t pg;
+                pg.pgd = 500;
+
+                printf("%lu \n", pg.pgd);
+                printf("%lu \n", pgd_pte(pg));
+                printf("%lu \n", pte_val(pgd_pte(pg)));
+
+                return 0;
+        }
+      ```
+      ```bash
+        sunghyun@sunghyun:~$ vim ./pte-test.c
+        sunghyun@sunghyun:~$ gcc -o pte-test ./pte-test.c
+        ./pte-test.c: In function ‘main’:
+        ./pte-test.c:25:19: warning: format ‘%lu’ expects argument of type ‘long unsigned int’, but argument 2 has type ‘pte_t {aka struct <anonymous>}’ [-Wformat=]
+                printf("%lu \n", pgd_pte(pg));
+                        ~~^      ~~~~~~~~~~~
+        sunghyun@sunghyun:~$ ./pte-test
+        500
+        500
+        500
+      ```
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/map64/
+    - http://jake.dothome.co.kr/pt64/
+
+## 38주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - arm64_memblock_init (/arch/arm64/mm/init.c)  
+>    - paging_init (arch/arm64/mm/mmu.c)  
+>      - map_kernel  
+>        - map_kernel_segment  
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/cma/
+    - http://jake.dothome.co.kr/dma_contiguous_remap/
+    - 
+2. Kernel Doc  
+    - https://www.kernel.org/doc/gorman/html/understand/understand009.html
+    - 
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Return-Address.html
+    - 
+
+## 37주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -194,7 +282,7 @@ Iamroot 16차 커널 스터디 기록용
 
 1. 정리
     - offsetof 함수
-        ```
+        ```bash
         sunghyun@sunghyun:~$ cat ./offset.c
         #include <stdio.h>
 
@@ -378,7 +466,7 @@ Iamroot 16차 커널 스터디 기록용
     - device tree 의 structure block
         - 4바이트 읽어서 1,2,3 인지에 따라 BEGIN_NODE, END_NODE, PROP 결정  
     - zero length array in structure : a gcc extension  
-      ```
+      ```bash
       sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./arr0.c
       #include \<stdio.h\>
       typedef struct arr0 {
@@ -475,7 +563,7 @@ Iamroot 16차 커널 스터디 기록용
 1. early_fixmap_init (arch/arm64/mm/mmu.c)  
     - init_pg_dir, swapper_pg_dir 차이  
     - __VA_ARGS__ 동작 예제 코드
-      ```
+      ```bash
       sunghyun@sunghyun:/mnt/c/Users/jin/Desktop$ cat ./test.c
       #include <stdio.h>
       #define a1(x) printf("%d...a1\n", x);
@@ -527,7 +615,7 @@ start_kernel() -  init/main.c
     set_cpu_{ online | active | present | possible }(cpu, {true | false}) // cpu bitmap setting (set or clear)  
   
 1. smp_processor_id  
-  
+```c  
 arch/arm64/include/asm/smp.h  
 DECLARE_PER_CPU_READ_MOSTLY(int, cpu_number);  
 arch/arm64/kernel/smp.c  
@@ -559,7 +647,8 @@ static inline unsigned long __my_cpu_offset(void)
   
    return off;  
 }  
-  
+```
+
 volatile 이 없음  
 입력 변수가 사용되지 않지만 존재  
 AAPCS64 에서 stack 는 full-descending 방식으로 변화됨  
