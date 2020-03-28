@@ -43,6 +43,8 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
+200307 - 40주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+
 200307 - 39주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
 
 200307 - 38주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실
@@ -130,6 +132,47 @@ Iamroot 16차 커널 스터디 기록용
 
 
 # 스터디 진행 내용
+
+## 40주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - paging_init (arch/arm64/mm/mmu.c)  
+>      - cpu_replace_ttbr1  
+>        - cpu_install_idmap  
+>          - cpu_set_reserved_ttbr0  
+>          - local_flush_tlb_all  
+>          - cpu_set_idmap_tcr_t0sz  
+>          - cpu_switch_mm  
+>        - idmap_cpu_replace_ttbr1  
+>        - cpu_uninstall_idmap  
+>          - cpu_set_reserved_ttbr0  
+>          - local_flush_tlb_all  
+>          - cpu_set_idmap_tcr_t0sz  
+>          - cpu_switch_mm  
+
+1. 정리
+    - ttbr 에 0을 채워주고 난 후에 TLB flush 해야함
+    - ttbr1에 swapper_pg 를 넣어주기 위해 idmap_pg 를 이용
+    - 그래서 __pa_symbol(idmap_cpu_replace_ttbr1) 즉, 함수의 물리주소 이용
+    - ASID (Address Space ID)
+
+참고
+0. Kernel patch commit message
+    - https://patchwork.kernel.org/patch/9992927/
+    - https://github.com/torvalds/linux/commit/50e1881ddde2a986c7d0d2150985239e5e3d7d96#diff-06e4e0038f65519bf8ab7562398c81be
+1. 문C블로그  
+    - http://jake.dothome.co.kr/map64/
+    - http://jake.dothome.co.kr/static-keys/
+    - http://jake.dothome.co.kr/cpu_replace_ttbr1/
+    - http://jake.dothome.co.kr/copy_from_user/
+2. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+3. ARM Doc
+    - https://armv8-ref.codingbelief.com/en/chapter_d4/d42_2_controlling_address_translation_stages.html
+3. etc
+    - http://recipes.egloos.com/5232056 : 임베디드레시피 MMU 설명
+    - https://woodz.tistory.com/67 : Likely 및 Unlikely 매크로 예제 설명
 
 ## 39주차
 > 요약  
@@ -223,6 +266,8 @@ Iamroot 16차 커널 스터디 기록용
 1. 문C블로그  
     - http://jake.dothome.co.kr/map64/
     - http://jake.dothome.co.kr/pt64/
+2. iamroot 질답
+    - http://www.iamroot.org/xe/index.php?document_srl=210100&mid=Programming
 
 ## 38주차
 > 요약  
@@ -346,8 +391,6 @@ Iamroot 16차 커널 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://www.kernel.org/doc/Documentation/efi-stub.txt
-0. Kernel patch commit message
-    - 
 1. 문C블로그  
     - http://jake.dothome.co.kr/head-64/
     - http://jake.dothome.co.kr/cpu_replace_ttbr1/
