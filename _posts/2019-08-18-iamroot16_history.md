@@ -43,11 +43,15 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200307 - 40주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+200411 - 42주차 - 명 - ?
 
-200307 - 39주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+200404 - 41주차 - (7+5)명 - 강남 힐스터디
 
-200307 - 38주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실
+200328 - 40주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+
+200321 - 39주차 - 8명 - 한양대학교 퓨전테크센터 403호 세미나실
+
+200314 - 38주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실
 
 200307 - 37주차 - 10명 - 한양대학교 퓨전테크센터 403호 세미나실
 
@@ -132,6 +136,67 @@ Iamroot 16차 커널 스터디 기록용
 
 
 # 스터디 진행 내용
+
+## 42주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - unflatten_device_tree (drivers/of/fdt.c)  
+>        -   
+
+1. 정리
+    - 
+
+참고
+0. Kernel patch commit message
+    - 
+1. 문C블로그  
+    - 
+2. GCC Doc
+    - 
+3. ARM Doc
+    - 
+3. etc
+    - 
+
+## 41주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - paging_init (arch/arm64/mm/mmu.c)  
+>      - memblock_free  
+>      - memblock_allow_resize  
+>    - unflatten_device_tree (drivers/of/fdt.c)  
+>      - early_init_dt_alloc_memory_arch  
+>        - memblock_alloc (include/linux/memblock.h)  
+>          - memblock_alloc_try_nid_raw (mm/memblock.c)  
+>            - memblock_alloc_internal  
+>              - memblock_alloc_range_nid  
+>      - __unflatten_device_tree  
+>        - unflatten_dt_nodes  
+>          - populate_node  
+>            - unflatten_dt_alloc  
+>            - populate_properties  
+
+1. 정리
+    - unflatten_device_tree 에서 첫 함수인 __unflatten_device_tree 에서는 flatten 데이터를 트리 구조의 구조체에 포인터로 연결을 함
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/linux_kernel/linux_4/
+    - http://jake.dothome.co.kr/setup_arch-64/
+    - http://jake.dothome.co.kr/memblock-2/
+    - http://jake.dothome.co.kr/kobject/
+    - http://jake.dothome.co.kr/unflatten_device_tree/
+    - http://jake.dothome.co.kr/dtb1/
+    - http://jake.dothome.co.kr/dtb-fdt-api/
+    - http://jake.dothome.co.kr/dtb-of-api/
+2. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc-6.2.0/gcc/Alignment.html
+3. etc
+    - https://github.com/iamroot16a/study/wiki/memblock#__next_mem_range() : iamroot16a 위키
+    - https://ko.wikipedia.org/wiki/%ED%8A%B8%EB%A6%AC_%EC%88%9C%ED%9A%8C : 트리 순회
+    - http://soen.kr/lecture/ccpp/cpp1/13-4-1.htm : C language bit field
 
 ## 40주차
 > 요약  
