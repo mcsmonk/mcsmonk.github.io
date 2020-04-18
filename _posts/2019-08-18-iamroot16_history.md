@@ -43,7 +43,11 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200411 - 42주차 - 명 - ?
+2004?? - 44주차 - (+)명 - ?
+
+200418 - 43주차 - (+)명 - 강남 이지스터디
+
+200411 - 42주차 - (10+3)명 - 강남 SG스터디 본관
 
 200404 - 41주차 - (7+5)명 - 강남 힐스터디
 
@@ -137,11 +141,13 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 42주차
+## 44주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
->    - unflatten_device_tree (drivers/of/fdt.c)  
+>    -  ()  
+>        -   
+>    -  ()  
 >        -   
 
 1. 정리
@@ -158,6 +164,64 @@ Iamroot 16차 커널 스터디 기록용
     - 
 3. etc
     - 
+
+## 43주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    -  ()  
+>        -   
+>    -  ()  
+>        -   
+
+1. 정리
+    - 
+
+참고
+0. Kernel patch commit message
+    - 
+1. 문C블로그  
+    - 
+2. GCC Doc
+    - 
+3. ARM Doc
+    - 
+3. etc
+    - 
+
+## 42주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - unflatten_device_tree (drivers/of/fdt.c)  
+>      - __unflatten_device_tree  
+>        - unflatten_dt_nodes  
+>          - populate_node : 복습  
+>            - unflatten_dt_alloc  
+>            - populate_properties  
+>          - reverse_nodes  
+>      - of_alias_scan : 완료  
+>        - of_find_node_by_path  
+>          - of_find_node_opts_by_path  
+>            - __of_find_node_by_full_path  
+>              - __of_find_node_by_path  
+>                - __of_get_next_child  
+>        - of_property_read_string  
+>          - of_find_property  
+>            - __of_find_property  
+
+1. 정리
+    - fdt API :  DTB(Device Tree Blob)를 대상으로 동작
+    - of API : unflattened DT를 대상으로 동작
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/spinlock/
+3. etc
+    - http://nimhaplz.egloos.com/5301468 : 스핀락
+    - http://nimhaplz.egloos.com/5683475 : preemption
+    - https://selfish-developer.com/entry/%EC%8A%A4%ED%95%80%EB%9D%BD-%EB%AE%A4%ED%85%8D%EC%8A%A4-%EC%84%B8%EB%A7%88%ED%8F%AC%EC%96%B4 : 스핀락, 뮤텍스, 세마포어
+    - https://worthpreading.tistory.com/90 : 뮤텍스(Mutex)와 세마포어(Semaphore)의 차이
 
 ## 41주차
 > 요약  
