@@ -45,7 +45,7 @@ Iamroot 16차 커널 스터디 기록용
 
 2004?? - 44주차 - (+)명 - ?
 
-200418 - 43주차 - (+)명 - 강남 이지스터디
+200418 - 43주차 - (11+3)명 - 강남 이지스터디
 
 200411 - 42주차 - (10+3)명 - 강남 SG스터디 본관
 
@@ -169,24 +169,36 @@ Iamroot 16차 커널 스터디 기록용
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
->    -  ()  
->        -   
->    -  ()  
->        -   
+>    - unflatten_device_tree (drivers/of/fdt.c)  
+>      - unittest_unflatten_overlay_base (drivers/of/unittest.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - early_memtest (mm/memtest.c)  
+>        - do_onepass  
+>          - memtest  
+>            - reserve_bad_mem  
+>      - arm64_numa_init (arch/arm64/mm/numa.c)  
+>        - of_numa_init (drivers/of/of_numa.c)  
+>          - of_numa_parse_cpu_nodes  
+>            - of_get_next_cpu_node (drivers/of/base.c)  
+>          - of_numa_parse_memory_nodes (drivers/of/of_numa.c)  
+>            - of_address_to_resource (drivers/of/address.c)  
+>              - of_get_address  
 
 1. 정리
-    - 
+    - 코드 진행시 참고한 파일 : arch/arm64/boot/dts/mediatek/mt6755.dtsi
 
 참고
 0. Kernel patch commit message
-    - 
+    - https://github.com/torvalds/linux/commit/4a20799d11f64e6b8725cacc7619b1ae1dbf9acd : mm: move memtest under mm
 1. 문C블로그  
-    - 
+    - http://jake.dothome.co.kr/bootmem_init-64/
+    - http://jake.dothome.co.kr/kobject/
 2. GCC Doc
     - 
 3. ARM Doc
     - 
 3. etc
+    - https://wikidocs.net/3205 : 디바이스 트리 오버레이
     - 
 
 ## 42주차
