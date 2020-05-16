@@ -43,9 +43,11 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-2004?? - 44주차 - (+)명 - ?
+2004?? - 45주차 - (+)명 - ?
 
-200418 - 43주차 - (11+3)명 - 강남 이지스터디
+200425 - 44주차 - (?+1?)명 - 강남 공간이즈 - 온라인 참석
+
+200418 - 43주차 - (11+3)명 - 강남 이지스터디 - 온라인 참석
 
 200411 - 42주차 - (10+3)명 - 강남 SG스터디 본관
 
@@ -59,7 +61,7 @@ Iamroot 16차 커널 스터디 기록용
 
 200307 - 37주차 - 10명 - 한양대학교 퓨전테크센터 403호 세미나실
 
-~~200229 - 36주차 - 명 - 한양대학교 퓨전테크센터 403호 세미나실~~ - __코로나로 인한 원격회의 시도 및 실패__
+~~200229 - 36주차 - ?명 - 한양대학교 퓨전테크센터 403호 세미나실 - 온라인 참석~~ - __코로나로 인한 원격회의 시도 및 실패__
 
 200222 - 35주차 - 14명 - 논현 인스페이스
 
@@ -120,7 +122,7 @@ Iamroot 16차 커널 스터디 기록용
 
 190713 - 8주차 - 7명 - 독산 모카플레이스
 
-~~190706 - 7주차 - ??명 - 강남 SG 스터디룸~~ - __휴가 제주도__
+~~190706 - 7주차 - ?명 - 강남 SG 스터디룸~~ - __휴가 제주도__
 
 190629 - 6주차 - 15명 - 강남 공간이즈
 
@@ -128,20 +130,20 @@ Iamroot 16차 커널 스터디 기록용
 
 > arch/arm64/kernel/head.S 분석 시작
 
-190615 - 4주차 - ??명 - 고려대학교 로봇융합관 301호
+190615 - 4주차 - ?명 - 고려대학교 로봇융합관 301호
 
-190608 - 3주차 - ??명 - 고려대학교 로봇융합관 301호
+190608 - 3주차 - ?명 - 고려대학교 로봇융합관 301호
 
-190601 - 2주차 - ?? 명 - 광운대학교 비마관 504호
+190601 - 2주차 - ?명 - 광운대학교 비마관 504호
 
-190525 - 1주차 - ?? 명 - 고려대학교 우정정보관 202호
+190525 - 1주차 - ?명 - 고려대학교 우정정보관 202호
 
 190518 - 0주차 - 오리엔테이션
 
 
 # 스터디 진행 내용
 
-## 44주차
+## 45주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -156,14 +158,58 @@ Iamroot 16차 커널 스터디 기록용
 참고
 0. Kernel patch commit message
     - 
+1. Kernel Doc
+    - 
+2. 문C블로그  
+    - 
+3. GCC Doc
+    - 
+4. ARM Doc
+    - 
+5. etc
+    - 
+
+## 44주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - arm64_numa_init (arch/arm64/mm/numa.c)  
+>        - numa_init  
+>          - numa_alloc_distance  
+>          -   
+>        - of_numa_init (drivers/of/of_numa.c)  
+>          - of_numa_parse_cpu_nodes  
+>            - of_get_next_cpu_node (drivers/of/base.c)  
+>          - of_numa_parse_memory_nodes (drivers/of/of_numa.c)  
+>            - of_address_to_resource (drivers/of/address.c)  
+>              - of_get_address  
+>              - __of_address_to_resource  
+>                - of_translate_address  
+>                  - __of_address_to_resource  
+>                -   
+>                -   
+>                -   
+>                -   
+
+1. 정리
+    - 
+
+참고
+0. Kernel patch commit message
+    - 
+1. Kernel Doc
+    - 
 1. 문C블로그  
     - 
 2. GCC Doc
-    - 
+    - https://gcc.gnu.org/onlinedocs/gcc/Designated-Inits.html
 3. ARM Doc
     - 
 3. etc
-    - 
+    - https://lwn.net/Articles/250967/ : What every programmer should know about memory, Part 1
+    - https://lwn.net/Articles/254445/ : Memory part 4: NUMA support
+    - http://forum.falinux.com/zbxe/index.php?document_srl=784583 : 디바이스 트리 작성법 2 편
 
 ## 43주차
 > 요약  
@@ -190,16 +236,13 @@ Iamroot 16차 커널 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://github.com/torvalds/linux/commit/4a20799d11f64e6b8725cacc7619b1ae1dbf9acd : mm: move memtest under mm
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/devicetree/bindings/numa.txt
 1. 문C블로그  
     - http://jake.dothome.co.kr/bootmem_init-64/
     - http://jake.dothome.co.kr/kobject/
-2. GCC Doc
-    - 
-3. ARM Doc
-    - 
 3. etc
     - https://wikidocs.net/3205 : 디바이스 트리 오버레이
-    - 
 
 ## 42주차
 > 요약  
