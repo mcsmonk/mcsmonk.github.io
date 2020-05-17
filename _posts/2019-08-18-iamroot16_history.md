@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-03-14T18:00:00-15:00
+last_modified_at: 2020-05-17T11:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -43,7 +43,11 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-2004?? - 45주차 - (+)명 - ?
+200523 - 47주차 - (+)명 - ?
+
+200516 - 46주차 - (12+1)명 - 강남 이지스터디
+
+~~200509 - 45주차 - (+)명 - 강남 이지스터디~~ - __친구 결혼식__
 
 200425 - 44주차 - (?+1?)명 - 강남 공간이즈 - 온라인 참석
 
@@ -143,7 +147,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 45주차
+## 47주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -158,16 +162,47 @@ Iamroot 16차 커널 스터디 기록용
 참고
 0. Kernel patch commit message
     - 
-1. Kernel Doc
+1. 문C블로그  
     - 
-2. 문C블로그  
+2. GCC Doc
     - 
-3. GCC Doc
+3. ARM Doc
     - 
-4. ARM Doc
+3. etc
     - 
-5. etc
+
+## 46주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - memblocks_present (mm/sparse.c)  
+>        - memory_present  
+>      - sparse_init (mm/sparse.c)  
+>        - sparse_init_nid  
+>          - sparse_mem_map_populate (mm/sparse-vmemmap.c)  
+>            - pfn_to_page (include/asm-generic/memory_model.h)  
+>              - __pfn_to_page  
+>            - vmemmap_populate (arch/arm64/mm/mmu.c)  
+
+1. 정리
+    - struct page 구조체 위치 linux/inlcude/linux/mm_types.h(69)
+    - vmemmap 관련 모기향 책 213페이지
+    - 메모리 모델 모기향 책 4.2
+    - vmemmap 개념
+      - memmap 크기 때문에 메모리 관리 및 속도 향상을 위해
+
+참고
+0. Kernel patch commit message
     - 
+1. 문C블로그  
+    - http://jake.dothome.co.kr/bootmem_init-64/
+    - http://jake.dothome.co.kr/sparsemem/
+    - http://jake.dothome.co.kr/mem_map/
+3. etc
+    - https://lwn.net/Articles/368869/ : Memory compaction
+    - https://woodz.tistory.com/42 : 위 글 번역
+    - https://stackoverflow.com/questions/36296130/why-does-is-err-value-cast-negative-max-errno-to-an-unsigned-long : optimize comparison -a < x < 0
 
 ## 44주차
 > 요약  
@@ -187,25 +222,10 @@ Iamroot 16차 커널 스터디 기록용
 >              - __of_address_to_resource  
 >                - of_translate_address  
 >                  - __of_address_to_resource  
->                -   
->                -   
->                -   
->                -   
-
-1. 정리
-    - 
 
 참고
-0. Kernel patch commit message
-    - 
-1. Kernel Doc
-    - 
-1. 문C블로그  
-    - 
 2. GCC Doc
     - https://gcc.gnu.org/onlinedocs/gcc/Designated-Inits.html
-3. ARM Doc
-    - 
 3. etc
     - https://lwn.net/Articles/250967/ : What every programmer should know about memory, Part 1
     - https://lwn.net/Articles/254445/ : Memory part 4: NUMA support
