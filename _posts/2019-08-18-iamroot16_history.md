@@ -43,7 +43,15 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200523 - 47주차 - (+)명 - ?
+200620 - 51주차 - (+)명 - 
+
+200613 - 50주차 - (+)명 - 
+
+200606 - 49주차 - (11+2)명 - 강남 이지스터디
+
+200530 - 48주차 - (13+1)명 - 강남 이지스터디
+
+200523 - 47주차 - 13명 - 강남 이지스터디
 
 200516 - 46주차 - (12+1)명 - 강남 이지스터디
 
@@ -147,7 +155,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 47주차
+## 51주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -171,6 +179,103 @@ Iamroot 16차 커널 스터디 기록용
 3. etc
     - 
 
+## 50주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    -  ()  
+>        -   
+>    -  ()  
+>        -   
+
+1. 정리
+    - 
+
+참고
+0. Kernel patch commit message
+    - 
+1. 문C블로그  
+    - 
+2. GCC Doc
+    - 
+3. ARM Doc
+    - 
+3. etc
+    - 
+
+## 49주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - zone_sizes_init (arch/arm64/mm/init.c)  
+>        - free_area_init_nodes (mm/page_alloc.c)  
+>          - find_zone_movable_pfns_for_nodes  
+>        - mminit_verify_pageflags_layout (mm/mm_init.c)  
+>        - setup_nr_node_ids (mm/page_alloc.c)  
+>        - zero_resv_unavail   
+>          - zero_pfn_range  
+>            - pfn_valid (arch/arm64/mm/init.c)  
+>        - free_area_init_node  
+>          - calculate_node_totalpages  
+>            - zone_spanned_pages_in_node  
+
+참고
+0. Kernel patch commit message
+    - https://github.com/iamroot16/linux/commit/ec393a0f014eaf688a3dbe8c8a4cbb52d7f535f9 : mm: return zero_resv_unavail optimization
+1. 문C블로그  
+    - http://jake.dothome.co.kr/zone-types/
+    - http://jake.dothome.co.kr/free_area_init_node/
+
+## 48주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - sparse_init (mm/sparse.c)  
+>        - sparse_init_nid  
+>          - sparse_init_one_section  
+>          - sparse_buffer_fini  
+>      - zone_sizes_init (arch/arm64/mm/init.c)  
+>        - free_area_init_nodes (mm/page_alloc.c)  
+>          - find_min_pfn_with_active_regions  
+>          - find_zone_movable_pfns_for_nodes  
+>            - early_calculate_totalpages  
+>            - find_usable_zone_for_movable  
+
+참고
+0. Kernel patch commit message
+    - https://github.com/torvalds/linux/commit/342332e6a925e9ed015e5465062c38d2b86ec8f9 : mm/page_alloc.c: introduce kernelcore=mirror option
+    - https://github.com/torvalds/linux/commit/a5c6d6509342785bef53bf9508e1842b303f1878 : mm, page_alloc: extend kernelcore and movablecore for percent
+1. 문C블로그  
+    - http://jake.dothome.co.kr/sparsemem/
+    - http://jake.dothome.co.kr/bootmem_init-64/
+    - http://jake.dothome.co.kr/free_area_init_node/
+    - http://jake.dothome.co.kr/build_all_zonelists/
+    - http://jake.dothome.co.kr/zone-types/
+
+## 47주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - sparse_init (mm/sparse.c)  
+>        - sparse_init_nid  
+>          - sparse_mem_map_populate (mm/sparse-vmemmap.c)  
+>            - vmemmap_populate (arch/arm64/mm/mmu.c)  
+>              - pmd_addr_end (include/asm-generic/pgtable.h)  
+>              - vmemmap_pgd_populate (mm/sparse-vmemmap.c)  
+>                - vmemmap_alloc_block_zero  
+>                  - vmemmap_alloc_block  
+>                    - __earlyonly_bootmem_alloc  
+>                      - memblock_alloc_try_nid_raw (mm/memblock.c)  
+>                        - memblock_alloc_internal  
+>                - pgd_populate (arch/arm64/include/asm/pgalloc.h)  
+
+참고
+1. 문C블로그  
+    - http://jake.dothome.co.kr/map64/
+
 ## 46주차
 > 요약  
 > 1. 진행사항
@@ -193,8 +298,6 @@ Iamroot 16차 커널 스터디 기록용
       - memmap 크기 때문에 메모리 관리 및 속도 향상을 위해
 
 참고
-0. Kernel patch commit message
-    - 
 1. 문C블로그  
     - http://jake.dothome.co.kr/bootmem_init-64/
     - http://jake.dothome.co.kr/sparsemem/
