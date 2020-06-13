@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-05-17T11:00:00-15:00
+last_modified_at: 2020-06-14T08:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -45,7 +45,7 @@ Iamroot 16차 커널 스터디 기록용
 
 200620 - 51주차 - (+)명 - 
 
-200613 - 50주차 - (+)명 - 
+200613 - 50주차 - 13명 - 강남 이지스터디
 
 200606 - 49주차 - (11+2)명 - 강남 이지스터디
 
@@ -183,25 +183,30 @@ Iamroot 16차 커널 스터디 기록용
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
->    -  ()  
->        -   
->    -  ()  
->        -   
-
-1. 정리
-    - 
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - zone_sizes_init (arch/arm64/mm/init.c)  
+>        - free_area_init_node (mm/page_alloc.c)  
+>          - calculate_node_totalpages  
+>            - zone_spanned_pages_in_node  
+>              - adjust_zone_range_for_zone_movable  
+>            - zone_absent_pages_in_node  
+>              - __absent_pages_in_range  
+>          - free_area_init_core  
+>            - pgdat_init_internals  
+>            - calc_memmap_size  
+>            - init_currently_empty_zone  
+>            - memmap_init  
+>              - memmap_init_zone  
+>                - overlap_memmap_init  
 
 참고
 0. Kernel patch commit message
-    - 
+    - https://lore.kernel.org/patchwork/patch/633557/ : mm/page_alloc.c: introduce kernelcore=mirror option
+    - https://lore.kernel.org/patchwork/patch/342354/ : mm: provide more accurate estimation of pages occupied by memmap
 1. 문C블로그  
-    - 
-2. GCC Doc
-    - 
-3. ARM Doc
-    - 
-3. etc
-    - 
+    - http://jake.dothome.co.kr/sparsemem/
+    - http://jake.dothome.co.kr/mem_map/
+    - http://jake.dothome.co.kr/free_area_init_node/
 
 ## 49주차
 > 요약  
