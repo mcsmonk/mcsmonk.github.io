@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-06-14T08:00:00-15:00
+last_modified_at: 2020-06-20T08:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -43,7 +43,9 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200620 - 51주차 - (+)명 - 
+200627 - 52주차 - (+)명 - 
+
+200620 - 51주차 - (11+1)명 - 강남 이지스터디
 
 200613 - 50주차 - 13명 - 강남 이지스터디
 
@@ -155,7 +157,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 51주차
+## 52주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -170,14 +172,49 @@ Iamroot 16차 커널 스터디 기록용
 참고
 0. Kernel patch commit message
     - 
+1. Kernel Doc
+    - 
+2. 문C블로그  
+    - 
+3. GCC Doc
+    - 
+4. ARM Doc
+    - 
+5. etc
+    - 
+
+## 51주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c)  
+>      - zone_sizes_init (arch/arm64/mm/init.c)  
+>        - free_area_init_node (mm/page_alloc.c)  
+>          - free_area_init_core  
+>            - memmap_init  
+>              - memmap_init_zone  
+>                - __init_single_page  
+>                - set_pageblock_migratetype  
+>                  - set_pageblock_flags_group  
+>        - check_for_memory  
+>      - memblock_dump_all (include/linux/memblock.h)  
+>        - __memblock_dump_all (mm/memblock.c)  
+>          - memblock_dump
+
+1. 정리
+    - bootmem_init 완료
+
+참고
+0. Kernel patch commit message
+    - https://lore.kernel.org/patchwork/patch/624316/ : \[tip/core/rcu,4/4\] list: Use WRITE_ONCE() when initializing list_head structures
+    - https://github.com/iamroot16/linux/commit/e58469bafd0524e848c3733bc3918d854595e20f : mm: page_alloc: use word-based accesses for get/set pageblock bitmaps
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/printk-formats.txt
 1. 문C블로그  
-    - 
-2. GCC Doc
-    - 
-3. ARM Doc
-    - 
+    - http://jake.dothome.co.kr/mem_map/
+    - http://jake.dothome.co.kr/sparsemem/
 3. etc
-    - 
+    - http://studyfoss.egloos.com/5512112 : \[Linux\] pageflags로 살펴본 메모리의 일생
 
 ## 50주차
 > 요약  
@@ -320,7 +357,6 @@ Iamroot 16차 커널 스터디 기록용
 >      - arm64_numa_init (arch/arm64/mm/numa.c)  
 >        - numa_init  
 >          - numa_alloc_distance  
->          -   
 >        - of_numa_init (drivers/of/of_numa.c)  
 >          - of_numa_parse_cpu_nodes  
 >            - of_get_next_cpu_node (drivers/of/base.c)  
@@ -332,6 +368,8 @@ Iamroot 16차 커널 스터디 기록용
 >                  - __of_address_to_resource  
 
 참고
+1. Kernel doc
+    - /Documentation/devicetree/bindings/numa.txt
 2. GCC Doc
     - https://gcc.gnu.org/onlinedocs/gcc/Designated-Inits.html
 3. etc
