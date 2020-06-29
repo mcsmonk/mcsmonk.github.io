@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-06-20T08:00:00-15:00
+last_modified_at: 2020-06-29T20:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -43,7 +43,9 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200627 - 52주차 - (+)명 - 
+200704 - 53주차 - (+)명 - 
+
+200627 - 52주차 - 14명 - 강남 이지스터디 - 문영일님 참석
 
 200620 - 51주차 - (11+1)명 - 강남 이지스터디
 
@@ -157,10 +159,17 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 52주차
+## 53주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - request_standard_resources  
+>        - request_resource (kernel/resource.c)  
+>          - request_resource_conflict  
+>            - __request_resource  
+>    - early_ioremap_reset (mm/early_ioremap.c)  
+>        -   
+>        -   
 >    -  ()  
 >        -   
 >    -  ()  
@@ -182,6 +191,34 @@ Iamroot 16차 커널 스터디 기록용
     - 
 5. etc
     - 
+
+## 52주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c) 복습  
+
+1. 정리
+    - 커널 코드가 복잡한 이유
+      - DRAM이 느려서 캐시 등 아키텍처 특징을 이용해야 됨
+    - 메모리 모델
+      - flatmem -> discontig -> sparse
+      - vmemmem 도입
+        - 효율성
+        - 메모리 할당 연속성
+    - 메모리 정리
+      - 실제 사용하는 물리 메모리 256TB
+      - 상위 절반은 리니어 매핑
+      - 하위는 다이나믹 매핑
+        - 5.4 버전부터는 반대로 바뀌었다고 함
+      - 리니어 매핑과 다이나믹 매핑에 실제 메모리에 대한 매핑 방식이 다름
+    - ARMv8-A_Programmers_Guide_for_ARMv8-A 문서 봐둘 것
+
+참고
+0. Kernel patch commit message
+    - https://github.com/iamroot16/linux/commit/ec393a0f014eaf688a3dbe8c8a4cbb52d7f535f9 : mm: return zero_resv_unavail optimization
+2. 문C블로그  
+    - http://jake.dothome.co.kr/sparsemem/
 
 ## 51주차
 > 요약  
@@ -235,6 +272,11 @@ Iamroot 16차 커널 스터디 기록용
 >            - memmap_init  
 >              - memmap_init_zone  
 >                - overlap_memmap_init  
+
+1. 정리
+    - struct page
+      - 64 Byte
+      - cscope 322
 
 참고
 0. Kernel patch commit message
