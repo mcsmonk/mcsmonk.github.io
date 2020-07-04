@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-06-29T20:00:00-15:00
+last_modified_at: 2020-07-04T22:00:00-15:00
 
 toc: true
 toc_sticky: true
@@ -43,7 +43,9 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200704 - 53주차 - (+)명 - 
+200711 - 54주차 - (+)명 - 
+
+200704 - 53주차 - 14명 - 강남 이지스터디 - 문영일님 참석
 
 200627 - 52주차 - 14명 - 강남 이지스터디 - 문영일님 참석
 
@@ -159,17 +161,10 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 53주차
+## 54주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
->    - request_standard_resources  
->        - request_resource (kernel/resource.c)  
->          - request_resource_conflict  
->            - __request_resource  
->    - early_ioremap_reset (mm/early_ioremap.c)  
->        -   
->        -   
 >    -  ()  
 >        -   
 >    -  ()  
@@ -184,6 +179,38 @@ Iamroot 16차 커널 스터디 기록용
 1. Kernel Doc
     - 
 2. 문C블로그  
+    - 
+3. GCC Doc
+    - 
+4. ARM Doc
+    - 
+5. etc
+    - 
+
+## 53주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c) 복습  
+
+1. 정리
+    - 동기화
+      - 스핀락
+      - 뮤텍스
+      - 세마포어
+      - 커널 단과 어플리케이션 단 차이
+    - 커널 분석시
+      - 세팅 되는 것들을 파악하면서 진행해야 함
+        - ex) bootmem_init 진행되었을 때 --> /proc/zoneinfo
+      - 각 부분의 큰 그림 정리해가면서 진행 필요
+
+참고
+0. Kernel patch commit message
+    - 
+1. Kernel Doc
+    - 
+2. 문C블로그  
+    - http://jake.dothome.co.kr/barriers/
     - 
 3. GCC Doc
     - 
