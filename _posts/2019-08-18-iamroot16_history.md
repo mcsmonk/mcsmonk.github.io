@@ -205,19 +205,10 @@ Iamroot 16차 커널 스터디 기록용
       - 각 부분의 큰 그림 정리해가면서 진행 필요
 
 참고
-0. Kernel patch commit message
-    - 
-1. Kernel Doc
-    - 
 2. 문C블로그  
     - http://jake.dothome.co.kr/barriers/
-    - 
-3. GCC Doc
-    - 
-4. ARM Doc
-    - 
 5. etc
-    - 
+    - https://lwn.net/Articles/793253/#Store%20Tearing
 
 ## 52주차
 > 요약  
