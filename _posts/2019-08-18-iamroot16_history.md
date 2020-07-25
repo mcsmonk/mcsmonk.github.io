@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-07-25T14:22:00
+last_modified_at: 2020-07-25T21:43:00
 
 toc: true
 toc_sticky: true
@@ -53,7 +53,7 @@ Iamroot 16차 커널 스터디 기록용
 
 200801 - 57주차 - (+)명 - 
 
-200725 - 56주차 - (+)명 - 강남 힐스터디
+200725 - 56주차 - 15명 - 강남 힐스터디
 
 200718 - 55주차 - ?명 - 강남 이지스터디 - 초반 1시간 30분만 참여
 
@@ -207,28 +207,26 @@ Iamroot 16차 커널 스터디 기록용
 >  - start_kernel (init/main.c)  
 >    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
 >      - pcpu_embed_first_chunk (mm/percpu.c)  
->        - pcpu_build_alloc_info (mm/percpu.c)  
->    -  ()  
->        -   
->    -  ()  
->        -   
+>        - pcpu_build_alloc_info  
+>          - pcpu_alloc_alloc_info  
+>        - pcpu_setup_first_chunk  
 
 1. 정리
-    - 
+    - define 문에서 do { ... } while(0) 으로 정의하는 이유
+      - empty statement일 경우 컴파일러 경고
+      - Dangling else 문제 방지
 
 참고
 0. Kernel patch commit message
-    - 
-1. Kernel Doc
-    - 
+    - https://github.com/iamroot16/linux/commit/a530b7958612bafe2027e21359083dba84f0b3b4#diff-5050eed868076fe2656aea8c2eb7312a : percpu: teach large page allocator about NUMA
 2. 문C블로그  
-    - 
-3. GCC Doc
-    - 
-4. ARM Doc
-    - 
+    - http://jake.dothome.co.kr/per-cpu/
+    - http://jake.dothome.co.kr/setup_per_cpu_areas/
+    - http://jake.dothome.co.kr/per-cpu-dynamic/
+    - http://jake.dothome.co.kr/per-cpu-atomic/
 5. etc
-    - 
+    - https://kjhg4321.gitbook.io/doodl/per-cpu
+    - https://kernelnewbies.org/FAQ/DoWhile0
 
 ## 55주차
 > 요약  
@@ -270,7 +268,7 @@ Iamroot 16차 커널 스터디 기록용
 1. 정리
     - Array of zero-length
     ``` bash
-    sunghyun@sunghyun:~$ cat ./array-of-length-zero.c
+    sunghyun@sunghyun:/mnt/d/Dropbox/laptop/iamroot/sources$ cat ./array-of-length-zero.c
     #include <stdio.h>
 
     struct test{
@@ -283,13 +281,15 @@ Iamroot 16차 커널 스터디 기록용
 
     int main()
     {
+            printf("%ld\n", sizeof(struct test));
             for(int i=0;i<7;i++){
                     printf("%d %d\n",k.b[i],p.b[i]);
             }
             return 0;
     }
-    sunghyun@sunghyun:~$ gcc -o array-of-length-zero ./array-of-length-zero.c
-    sunghyun@sunghyun:~$ ./array-of-length-zero
+    sunghyun@sunghyun:/mnt/d/Dropbox/laptop/iamroot/sources$ gcc -o array-of-length-zero ./array-of-length-zero.c
+    sunghyun@sunghyun:/mnt/d/Dropbox/laptop/iamroot/sources$ ./array-of-length-zero
+    4
     0 0
     0 0
     0 0
