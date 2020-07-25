@@ -30,6 +30,12 @@ I hope to be able to contribute something to change the world someday and I'm tr
     - serve in the army, 18 Jan 2010 - 7 Nov 2011 : Military duty is mandatory in Korea
 
 
+### CONTACT
+![icon-email](https://img.shields.io/badge/Email-sunghyunjin%40korea.ac.kr-important) sunghyunjin@korea.ac.kr  
+
+
+<!---
+
 ### PUBLICATION
 
 [Google scholar](https://scholar.google.co.kr/citations?user=1HOiZg0AAAAJ&hl=ko)
@@ -54,10 +60,7 @@ I hope to be able to contribute something to change the world someday and I'm tr
     - Tensorflow, Keras
 
 
-### CONTACT
-![icon-email](https://img.shields.io/badge/Email-sunghyunjin%40korea.ac.kr-important) sunghyunjin@korea.ac.kr  
 
-<!---
 {: .align-left}
 ### My Bucket List
     2020

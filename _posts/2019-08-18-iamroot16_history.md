@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-07-04T22:00:00-15:00
+last_modified_at: 2020-07-25T14:22:00
 
 toc: true
 toc_sticky: true
@@ -43,7 +43,21 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200711 - 54주차 - (+)명 - 
+200829 - 61주차 - (+)명 - 
+
+200822 - 60주차 - (+)명 - 
+
+200815 - 59주차 - (+)명 - 
+
+200808 - 58주차 - (+)명 - 
+
+200801 - 57주차 - (+)명 - 
+
+200725 - 56주차 - (+)명 - 강남 힐스터디
+
+200718 - 55주차 - ?명 - 강남 이지스터디 - 초반 1시간 30분만 참여
+
+200711 - 54주차 - 11명 - 강남 이지스터디
 
 200704 - 53주차 - 14명 - 강남 이지스터디 - 문영일님 참석
 
@@ -161,7 +175,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 54주차
+## 57주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -186,6 +200,225 @@ Iamroot 16차 커널 스터디 기록용
     - 
 5. etc
     - 
+
+## 56주차
+> 요약  
+> 1. 진행사항
+>  - start_kernel (init/main.c)  
+>    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
+>      - pcpu_embed_first_chunk (mm/percpu.c)  
+>        - pcpu_build_alloc_info (mm/percpu.c)  
+>    -  ()  
+>        -   
+>    -  ()  
+>        -   
+
+1. 정리
+    - 
+
+참고
+0. Kernel patch commit message
+    - 
+1. Kernel Doc
+    - 
+2. 문C블로그  
+    - 
+3. GCC Doc
+    - 
+4. ARM Doc
+    - 
+5. etc
+    - 
+
+## 55주차
+> 요약  
+> 1. 진행사항
+>  - start_kernel (init/main.c)  
+>    - setup_arch (arch/arm64/kernel/setup.c)  
+>      - cpu_read_bootcpu_ops (arch/arm64/include/asm/cpu_ops.h)  
+>        - cpu_read_ops (arch/arm64/kernel/cpu_ops.c)  
+>          - cpu_read_enable_method  
+>          - cpu_get_ops  
+>      - smp_init_cpus (arch/arm64/kernel/smp.c)  
+>          - of_parse_and_init_cpus  
+>            - is_mpidr_duplicate  
+>            - early_map_cpu_to_node (arch/arm64/mm/numa.c)  
+>              - set_cpu_numa_node (include/linux/topology.h)  
+>                - per_cpu (include/linux/percpu-defs.h)  
+>                  - per_cpu_ptr    
+>          - smp_cpu_setup (arch/arm64/kernel/smp.c) <-- 대충 이부분까지 참석  
+>            - cpu_read_ops (arch/arm64/kernel/cpu_ops.c)  
+>            - smp_spin_table_cpu_init (arch/arm64/kernel/smp_spin_table.c)  
+>            - set_cpu_possible (include/linux/cpumask.h)  
+>      - smp_build_mpidr_hash (arch/arm64/kernel/setup.c)  
+>        - MPIDR_AFFINITY_LEVEL (arch/arm64/include/asm/cputype.h)  
+>        - fls  
+>        - ffs  
+>    - add_latent_entropy (include/linux/random.h)  
+>    - add_device_randomness (drivers/char/random.c)  
+>    - boot_init_stack_canary (arch/arm64/include/asm/stackprotector.h)  
+>      - get_random_bytes (drivers/char/random.c)  
+>        - _get_random_bytes  
+>    - mm_init_cpumask (include/linux/mm_types.h)  
+>    - setup_command_line (init/main.c)  
+>    - setup_nr_cpu_ids (kernel/smp.c)  
+>    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
+>      - pcpu_embed_first_chunk (mm/percpu.c)  
+>        - pcpu_build_alloc_info (mm/percpu.c)  
+
+
+1. 정리
+    - Array of zero-length
+    ``` bash
+    sunghyun@sunghyun:~$ cat ./array-of-length-zero.c
+    #include <stdio.h>
+
+    struct test{
+            int a;
+            int b[];
+    };
+
+    struct test k = {.b = {[4]=3}};
+    struct test p = {.b = {[6]=3}};
+
+    int main()
+    {
+            for(int i=0;i<7;i++){
+                    printf("%d %d\n",k.b[i],p.b[i]);
+            }
+            return 0;
+    }
+    sunghyun@sunghyun:~$ gcc -o array-of-length-zero ./array-of-length-zero.c
+    sunghyun@sunghyun:~$ ./array-of-length-zero
+    0 0
+    0 0
+    0 0
+    0 0
+    3 0
+    0 0
+    0 3
+    ```
+
+참고
+0. Kernel patch commit message
+    - https://patchwork.kernel.org/patch/2657941/ : \[RFC,1/2\] ARM: kernel: build MPIDR hash function data structure
+    - https://github.com/torvalds/linux/commit/c1a2f7f0c06454387c2cd7b93ff1491c715a8c69 : mm: Allocate the mm_cpumask (mm->cpu_bitmap[]) dynamically based on n…
+1. Kernel Doc
+    - /Documentation/arm64/booting.txt
+2. 문C블로그  
+    - http://jake.dothome.co.kr/smp_init_cpus/
+    - http://jake.dothome.co.kr/dtb2/
+    - http://jake.dothome.co.kr/per-cpu/
+    - http://jake.dothome.co.kr/smp_build_mpidr_hash/
+    - http://jake.dothome.co.kr/smp_setup_processor_id/
+    - http://jake.dothome.co.kr/boot_init_stack_canary/
+    - http://jake.dothome.co.kr/setup_per_cpu_areas/
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html : Array of zero-length
+5. etc
+    - https://app.gitbook.com/@paran-lee/s/qemu/x86_64-aarch64 : x86_64 호스트에서 aarch64 가상화 환경 구축
+    - https://elinux.org/images/0/00/Clement-smp-bring-up-on-arm-soc.pdf : 2004-Embedded Linux Conf.-SMP bring up on ARM SoCs
+    - https://ko.wikipedia.org/wiki/Big.LITTLE
+    - https://en.wikipedia.org/wiki/ARM_big.LITTLE
+    - https://namu.wiki/w/ARM%20big.LITTLE%20%EC%86%94%EB%A3%A8%EC%85%98
+    - https://lwn.net/Articles/539082/ : Multi-cluster power management
+    - https://lwn.net/Articles/481055/ : Linux support for ARM big.LITTLE
+    - https://en.wikipedia.org/wiki/Hardware_random_number_generator
+    - https://en.wikipedia.org/wiki//dev/random
+    - https://en.wikipedia.org/wiki/Random_number_generator_attack
+    - https://github.com/ARM-software/TZ-TRNG
+    - https://ko.wikipedia.org/wiki/버퍼_오버플로_보호#카나리스
+    - 
+
+## 54주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - bootmem_init (arch/arm64/mm/init.c) 복습  
+>    - request_standard_resources (arch/arm64/kernel/setup.c)  
+>        - request_resource (kernel/resource.c)  
+>          - request_resource_conflict  
+>            - __request_resource  
+>    - psci_dt_init (drivers/firmware/psci.c)  
+>        - of_find_matching_node_and_match (drivers/of/base.c)  
+>        - psci_0_2_init (drivers/firmware/psci.c)  
+>          - get_set_conduit_method  
+>            - set_conduit  
+>              - __invoke_psci_fn_hvc  
+>                - arm_smccc_hvc  
+>              - __invoke_psci_fn_smc  
+>                - arm_smccc_smc  
+>          - psci_probe  
+>            - psci_get_version  
+>            - psci_0_2_set_functions  
+>            - psci_init_migrate  
+>            - psci_init_smccc  
+>            - psci_init_cpu_suspend  
+>            - psci_init_system_suspend  
+>    - cpu_read_bootcpu_ops (arch/arm64/include/asm/cpu_ops.h)  
+>      - cpu_read_ops (arch/arm64/kernel/cpu_ops.c)  
+>        - cpu_read_enable_method  
+
+1. 정리
+    - SMCCC (Secure Monitor Call Calling Convention)
+      - /arch/arm64/kernel/smccc-call.S
+      ``` asm
+            .macro SMCCC instr
+            .cfi_startproc
+            \instr	#0
+            ldr	x4, [sp]
+            stp	x0, x1, [x4, #ARM_SMCCC_RES_X0_OFFS]
+            stp	x2, x3, [x4, #ARM_SMCCC_RES_X2_OFFS]
+            ldr	x4, [sp, #8]
+            cbz	x4, 1f /* no quirk structure */
+            ldr	x9, [x4, #ARM_SMCCC_QUIRK_ID_OFFS]
+            cmp	x9, #ARM_SMCCC_QUIRK_QCOM_A6
+            b.ne	1f
+            str	x6, [x4, ARM_SMCCC_QUIRK_STATE_OFFS]
+        1:	ret
+            .cfi_endproc
+            .endm
+        /*
+        * void arm_smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2,
+        *		  unsigned long a3, unsigned long a4, unsigned long a5,
+        *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res,
+        *		  struct arm_smccc_quirk *quirk)
+        */
+        ENTRY(__arm_smccc_smc)
+            SMCCC	smc
+        ENDPROC(__arm_smccc_smc)
+        EXPORT_SYMBOL(__arm_smccc_smc)
+
+        /*
+        * void arm_smccc_hvc(unsigned long a0, unsigned long a1, unsigned long a2,
+        *		  unsigned long a3, unsigned long a4, unsigned long a5,
+        *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res,
+        *		  struct arm_smccc_quirk *quirk)
+        */
+        ENTRY(__arm_smccc_hvc)
+            SMCCC	hvc
+        ENDPROC(__arm_smccc_hvc)
+        EXPORT_SYMBOL(__arm_smccc_hvc)
+      ```
+
+참고
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt
+    - https://www.kernel.org/doc/Documentation/locking/spinlocks.txt : rwreader-writer spinlocks
+    - https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/psci.txt
+    - /Documentation/devicetree/bindings/arm/cpus.yaml ; 소스 내의 파일을 볼 것
+2. 문C블로그  
+    - http://jake.dothome.co.kr/arm_memblock_init/
+    - http://jake.dothome.co.kr/request_standard_resources/
+    - http://jake.dothome.co.kr/tcm_init/
+    - http://jake.dothome.co.kr/psci_init/
+    - http://jake.dothome.co.kr/smp_setup_processor_id/
+4. ARM Doc
+    - DEN0022C_Power_State_Coordination_Interface.pdf
+    - Q1-ARM-DEN-0028_SMC_Calling_Convention_v1_2_Non_Conf_EAC.pdf
+    - ARMv8-A_Programmers_Guide_for_ARMv8-A.pdf
+5. etc
+    - https://kjhg4321.gitbook.io/doodl/
 
 ## 53주차
 > 요약  
