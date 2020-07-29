@@ -215,6 +215,15 @@ Iamroot 16차 커널 스터디 기록용
     - define 문에서 do { ... } while(0) 으로 정의하는 이유
       - empty statement일 경우 컴파일러 경고
       - Dangling else 문제 방지
+    - 아래 내용 정리 필요
+      - multiprocessor
+      - multicore
+      - SMP (Symmetric MultiProcessing)
+        - Symmetric multiprocessors include two or more identical processors sharing a single main memory. The multiple processors may be separate chips or multiple cores on the same chip.
+      - UMA (Uniform Memory Access)
+      - NUMA (Non-Uniform Memory Access)
+      - CMP (Chip Multi-processor)
+      - SMT (Simultaneous Multithreading)
 
 참고
 0. Kernel patch commit message
