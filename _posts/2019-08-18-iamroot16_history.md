@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-07-25T21:43:00
+last_modified_at: 2020-08-01T21:43:00
 
 toc: true
 toc_sticky: true
@@ -43,15 +43,17 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200829 - 61주차 - (+)명 - 
+200905 - 61주차 - (+)명 - 
 
-200822 - 60주차 - (+)명 - 
+200829 - 60주차 - (+)명 - 
 
-200815 - 59주차 - (+)명 - 
+200822 - 59주차 - (+)명 - 
+
+200815 - 여름 휴가
 
 200808 - 58주차 - (+)명 - 
 
-200801 - 57주차 - (+)명 - 
+200801 - 57주차 - 15명 - 강남 이지스터디
 
 200725 - 56주차 - 15명 - 강남 힐스터디
 
@@ -175,7 +177,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 57주차
+## 58주차
 > 요약  
 > 1. 진행사항
 >  - setup_arch (arch/arm64/kernel/setup.c)  
@@ -200,6 +202,68 @@ Iamroot 16차 커널 스터디 기록용
     - 
 5. etc
     - 
+
+## 57주차
+> 요약  
+> 1. 진행사항
+>  - setup_arch (arch/arm64/kernel/setup.c)  
+>    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
+>      - pcpu_embed_first_chunk (mm/percpu.c)  
+>        - pcpu_setup_first_chunk  
+>          - __pcpu_size_to_slot  
+>          - pcpu_alloc_first_chunk  
+>            - pcpu_chunk_map_bits  
+>            - pcpu_chunk_nr_blocks  
+>            - pcpu_init_md_blocks  
+>            - bitmap_fill  
+>            - pcpu_cnt_pop_pages  
+>            - pcpu_block_update_hint_alloc  
+>              - pcpu_off_to_block_index  
+>              - pcpu_off_to_block_off  
+>              - pcpu_index_alloc_map  
+
+1. 정리
+    - bug ?
+      - mm/percpu.c:1105
+      ``` c
+      alloc_size = sizeof(struct pcpu_chunk) +
+                BITS_TO_LONGS(region_size >> PAGE_SHIFT);
+      chunk = memblock_alloc(alloc_size, SMP_CACHE_BYTES);
+      ```
+      ``` c
+      struct pcpu_chunk {                                                                                                                                          ...
+        unsigned long           populated[];    /* populated bitmap */
+      };
+      ```
+      - BITS_TO_LONGS(region_size >> PAGE_SHIFT); -?-> BITS_TO_LONGS(region_size >> PAGE_SHIFT) * sizeof(unsigned long); 
+      - Check whether chunk->populated is used directly : USE !!
+      
+참고
+0. Kernel patch commit message
+    - https://github.com/iamroot16/linux/commit/ca460b3c96274d79f84b31a3fea23a6eed479917 : percpu: introduce bitmap metadata blocks
+    - https://github.com/iamroot16/linux/commit/8ab16c43ea79098f4126432c6b199a5d6ba24b6d : percpu: change the number of pages marked in the first_chunk pop bitmap
+      - https://github.com/iamroot16/linux/blob/8ab16c43ea79098f4126432c6b199a5d6ba24b6d/mm/percpu.c
+        ``` c
+        pcpu_chunk_struct_size = sizeof(struct pcpu_chunk) +
+		                        BITS_TO_LONGS(pcpu_unit_pages) * sizeof(unsigned long);
+        ...
+        chunk = memblock_virt_alloc(pcpu_chunk_struct_size, 0);
+        ```
+        ->
+        ``` c
+        chunk = memblock_virt_alloc(sizeof(struct pcpu_chunk) +
+                BITS_TO_LONGS(region_size >> PAGE_SHIFT),
+                0);
+        ```
+2. 문C블로그  
+    - http://jake.dothome.co.kr/setup_nr_cpu_ids/
+    - http://jake.dothome.co.kr/per-cpu/
+    - 
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc-4.5.0/gcc/Conditionals.html#Conditionals
+5. etc
+    - https://kjhg4321.gitbook.io/doodl/per-cpu : 양원혁님 per-cpu 정리
+    - http://forum.falinux.com/zbxe/index.php?document_srl=533512&mid=Kernel_API : 커널 API - Bit 처리 매크로
 
 ## 56주차
 > 요약  
@@ -234,7 +298,7 @@ Iamroot 16차 커널 스터디 기록용
     - http://jake.dothome.co.kr/per-cpu-dynamic/
     - http://jake.dothome.co.kr/per-cpu-atomic/
 5. etc
-    - https://kjhg4321.gitbook.io/doodl/per-cpu
+    - https://kjhg4321.gitbook.io/doodl/per-cpu : 양원혁님 per-cpu 정리
     - https://kernelnewbies.org/FAQ/DoWhile0
 
 ## 55주차
