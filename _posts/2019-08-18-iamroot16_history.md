@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-08-01T21:43:00
+last_modified_at: 2020-08-11T19:30:00
 
 toc: true
 toc_sticky: true
@@ -51,7 +51,7 @@ Iamroot 16차 커널 스터디 기록용
 
 200815 - 여름 휴가
 
-200808 - 58주차 - (+)명 - 
+200808 - 58주차 - (11+1)명 - 강남 이지스터디
 
 200801 - 57주차 - 15명 - 강남 이지스터디
 
@@ -177,10 +177,10 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 58주차
+## 59주차
 > 요약  
 > 1. 진행사항
->  - setup_arch (arch/arm64/kernel/setup.c)  
+>  - start_kernel (init/main.c)  
 >    -  ()  
 >        -   
 >    -  ()  
@@ -203,10 +203,35 @@ Iamroot 16차 커널 스터디 기록용
 5. etc
     - 
 
+## 58주차
+> 요약  
+> 1. 진행사항
+>  - start_kernel (init/main.c)  
+>    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
+>      - pcpu_embed_first_chunk (mm/percpu.c)  
+>        - pcpu_setup_first_chunk  
+>          - __pcpu_size_to_slot  
+>          - pcpu_alloc_first_chunk  
+>            - pcpu_block_update_hint_alloc  
+>              - pcpu_block_refresh_hint  
+>              - pcpu_chunk_refresh_hint  
+>                - pcpu_next_md_free_region  
+>                - pcpu_chunk_update  
+>                - pcpu_cnt_pop_pages  
+>          - pcpu_chunk_relocate  
+
+참고
+2. 문C블로그  
+    - http://jake.dothome.co.kr/per-cpu/
+    - http://jake.dothome.co.kr/setup_per_cpu_areas/
+    - http://jake.dothome.co.kr/bit-operations/
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+
 ## 57주차
 > 요약  
 > 1. 진행사항
->  - setup_arch (arch/arm64/kernel/setup.c)  
+>  - start_kernel (init/main.c)  
 >    - setup_per_cpu_areas (arch/arm64/mm/numa.c)  
 >      - pcpu_embed_first_chunk (mm/percpu.c)  
 >        - pcpu_setup_first_chunk  
@@ -231,12 +256,15 @@ Iamroot 16차 커널 스터디 기록용
       chunk = memblock_alloc(alloc_size, SMP_CACHE_BYTES);
       ```
       ``` c
-      struct pcpu_chunk {                                                                                                                                          ...
+      struct pcpu_chunk {
+        ...
         unsigned long           populated[];    /* populated bitmap */
       };
       ```
       - BITS_TO_LONGS(region_size >> PAGE_SHIFT); -?-> BITS_TO_LONGS(region_size >> PAGE_SHIFT) * sizeof(unsigned long); 
       - Check whether chunk->populated is used directly : USE !!
+      - 첫 커널 패치 제출 : https://lkml.org/lkml/2020/8/2/94
+        - 컨벤션 미준수 ... 다음엔 제대로 해보기 !
       
 참고
 0. Kernel patch commit message
@@ -258,7 +286,6 @@ Iamroot 16차 커널 스터디 기록용
 2. 문C블로그  
     - http://jake.dothome.co.kr/setup_nr_cpu_ids/
     - http://jake.dothome.co.kr/per-cpu/
-    - 
 3. GCC Doc
     - https://gcc.gnu.org/onlinedocs/gcc-4.5.0/gcc/Conditionals.html#Conditionals
 5. etc
