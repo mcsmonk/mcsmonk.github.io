@@ -263,7 +263,7 @@ Iamroot 16차 커널 스터디 기록용
       ```
       - BITS_TO_LONGS(region_size >> PAGE_SHIFT); -?-> BITS_TO_LONGS(region_size >> PAGE_SHIFT) * sizeof(unsigned long); 
       - Check whether chunk->populated is used directly : USE !!
-      - 첫 커널 패치 제출 : https://lkml.org/lkml/2020/8/2/94
+      - 첫 커널 패치 제출 : [https://lkml.org/lkml/2020/8/2/94](https://lkml.org/lkml/2020/8/2/94)
         - 컨벤션 미준수 ... 다음엔 제대로 해보기 !
       
 참고
