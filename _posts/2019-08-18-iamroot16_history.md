@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-08-11T19:30:00
+last_modified_at: 2020-08-29T22:06:00
 
 toc: true
 toc_sticky: true
@@ -43,11 +43,13 @@ Iamroot 16차 커널 스터디 기록용
 
 # Records
 
-200905 - 61주차 - (+)명 - 
+200912 - 61주차 - (+)명 - 
 
-200829 - 60주차 - (+)명 - 
+200905 - 60주차 - (+)명 - 
 
-200822 - 59주차 - (+)명 - 
+200829 - 59주차 - 9명 - 온라인 - 코로나로 인한 전체 화상 원격 회의 첫 시도
+
+200822 - 코로나로 인한 취소
 
 200815 - 여름 휴가
 
@@ -177,7 +179,7 @@ Iamroot 16차 커널 스터디 기록용
 
 # 스터디 진행 내용
 
-## 59주차
+## 60주차
 > 요약  
 > 1. 진행사항
 >  - start_kernel (init/main.c)  
@@ -202,6 +204,38 @@ Iamroot 16차 커널 스터디 기록용
     - 
 5. etc
     - 
+
+## 59주차
+> 요약  
+> 1. 진행사항
+>    - setup_per_cpu_areas 개념 복습
+>    - static-key 분석
+>      - include/linux/jump_label.h
+>      - arch/arm64/include/asm/jump_label.h
+
+1. 정리
+    - 원격 화상 회의를 통한 스터디 진행
+      - 15-18 : meet을 이용
+        - 화질 안 좋음
+        - 마이크 노이즈 심함
+        - 카톡 음성 채팅으로 대체
+    - setup_per_cpu_areas 개념 복습
+    - static-key 분석
+
+참고
+0. Kernel patch commit message
+    - https://github.com/torvalds/linux/commit/11276d5306b8e5b438a36bbff855fe792d7eaa61
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/static-keys.txt
+    - https://www.kernel.org/doc/Documentation/trace/tracepoints.txt
+2. 문C블로그  
+    - http://jake.dothome.co.kr/per-cpu/
+    - http://jake.dothome.co.kr/jump_label_init/
+    - http://jake.dothome.co.kr/static-keys/
+5. etc
+    - https://wariua.github.io/facility/labels-and-static-key.html
+    - https://gcc.gnu.org/legacy-ml/gcc-patches/2009-07/msg01556.html
+    - https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2019/07/20/linux-static-key-internals
 
 ## 58주차
 > 요약  
