@@ -80,6 +80,7 @@ toc_label: "On this page"
         ```
     4. 커널 패치 제출
         - 구글 2단계 인증 때문에 mutt으로 계속 실패해서 git send-email로 시도함
+
         ``` BASH
         $ sudo apt-get install git-email
         $ git send-email --annotate HEAD^
