@@ -22,7 +22,7 @@ toc_sticky: true
 toc_label: "On this page"
 ---
 
-Iamroot 16차 커널 스터디 기록용
+Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 # Resources
 
@@ -45,7 +45,7 @@ Iamroot 16차 커널 스터디 기록용
 
 200912 - 61주차 - (+)명 - 
 
-200905 - 60주차 - (+)명 - 
+200905 - 60주차 - (+)명 - 온라인
 
 200829 - 59주차 - 9명 - 온라인 - 코로나로 인한 전체 화상 원격 회의 첫 시도
 
