@@ -293,7 +293,47 @@ Message-Id: <20200903115343.1316-1-mcsmonk@gmail.com>
 X-Mailer: git-send-email 2.17.1
 
 Result: 250
+
+$ git send-email --to linux-mm@kvack.org ./0001-mm-percpu.c-Modify-calculation-of-size-of-populated-.patch
+./0001-mm-percpu.c-Modify-calculation-of-size-of-populated-.patch
+(mbox) Adding cc: Sunghyun Jin <mcsmonk@gmail.com> from line 'From: Sunghyun Jin <mcsmonk@gmail.com>'
+(body) Adding cc: Sunghyun Jin <mcsmonk@gmail.com> from line 'Signed-off-by: Sunghyun Jin <mcsmonk@gmail.com>'
+
+From: mcsmonk <mcsmonk@gmail.com>
+To: linux-mm@kvack.org
+Cc: Sunghyun Jin <mcsmonk@gmail.com>
+Subject: [PATCH] mm/percpu.c: Modify calculation of size of populated bitmap of chunk for memory allocation
+Date: Thu,  3 Sep 2020 20:53:43 +0900
+Message-Id: <20200903124116.1668-1-mcsmonk@gmail.com>
+X-Mailer: git-send-email 2.17.1
+
+    The Cc list above has been expanded by additional
+    addresses found in the patch commit message. By default
+    send-email prompts before sending whenever this occurs.
+    This behavior is controlled by the sendemail.confirm
+    configuration setting.
+
+    For additional information, run 'git send-email --help'.
+    To retain the current behavior, but squelch this message,
+    run 'git config --global sendemail.confirm auto'.
+
+Send this email? ([y]es|[n]o|[q]uit|[a]ll): y
+OK. Log says:
+Server: smtp.googlemail.com
+MAIL FROM:<mcsmonk@gmail.com>
+RCPT TO:<linux-mm@kvack.org>
+RCPT TO:<mcsmonk@gmail.com>
+From: mcsmonk <mcsmonk@gmail.com>
+To: linux-mm@kvack.org
+Cc: Sunghyun Jin <mcsmonk@gmail.com>
+Subject: [PATCH] mm/percpu.c: Modify calculation of size of populated bitmap of chunk for memory allocation
+Date: Thu,  3 Sep 2020 20:53:43 +0900
+Message-Id: <20200903115343.1316-1-mcsmonk@gmail.com>
+X-Mailer: git-send-email 2.17.1
+
+Result: 250
 ```
 
 ## 결과
+- https://lore.kernel.org/linux-mm/20200903124116.1668-1-mcsmonk@gmail.com/T/#u
 - 이번엔 제대로 제출되었을지 ...
