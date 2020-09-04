@@ -13,12 +13,13 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-09-03T21:15:00
+last_modified_at: 2020-09-04T10:44:00
 
 toc: true
 toc_sticky: true
 toc_label: "On this page"
 ---
+
 
 # 첫 커널 패치 제출 시도 1 : 2020.08.02
 
@@ -131,8 +132,8 @@ toc_label: "On this page"
         ```
 
 ## 결과
-- https://marc.info/?l=linux-kernel&m=159637037815556&w=2
-- https://lkml.org/lkml/2020/8/2/94
+- [https://marc.info/?l=linux-kernel&m=159637037815556&w=2](https://marc.info/?l=linux-kernel&m=159637037815556&w=2)
+- [https://lkml.org/lkml/2020/8/2/94](https://lkml.org/lkml/2020/8/2/94)
 - 급한 마음에 리눅스 커널 패치 컨벤션도 무시해버림
 - 제출한 커밋이 제대로 된건지 피드백 자체가 없어서 모르겠음
     - 제출한 패치가 잘못된 수정인지, 제대로 받을 사람에게 보내진건지, 컨벤션 미준수로 스킵 당한건지 ... 
@@ -148,19 +149,19 @@ toc_label: "On this page"
 
 ## 참고 사이트
 - Linux Kernel Official Doc
-    - https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+    - [https://www.kernel.org/doc/html/latest/process/submitting-patches.html](https://www.kernel.org/doc/html/latest/process/submitting-patches.html)
 - [AustinKim](http://rousalome.egloos.com/)님의 커널 제출 방법
-    - https://kldp.org/node/162104
+    - [https://kldp.org/node/162104](https://kldp.org/node/162104)
 - KernelNewbies: Outreachyfirstpatch
-    - https://kernelnewbies.org/Outreachyfirstpatch
+    - [https://kernelnewbies.org/Outreachyfirstpatch](https://kernelnewbies.org/Outreachyfirstpatch)
 - git send-email
-    - https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9
+    - [https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9](https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9)
 
 
 
 # 첫 커널 패치 제출 시도 2 : 2020.09.03
 
-커널 패치 제출에 대한 다른 글[link](https://dry-kiss.blogspot.com/2012/10/blog-post.html)을 참고하여 다시 제출
+[SeongJae Park](https://sjp38.github.io/ko/)님의 커널 패치 제출에 대한 다른 글[link](https://dry-kiss.blogspot.com/2012/10/blog-post.html)을 참고하여 다시 제출
 
 ## 과정
 ``` BASH
@@ -335,5 +336,79 @@ Result: 250
 ```
 
 ## 결과
-- https://lore.kernel.org/linux-mm/20200903124116.1668-1-mcsmonk@gmail.com/T/#u
-- 이번엔 제대로 제출되었을지 ...
+- [https://lore.kernel.org/linux-mm/20200903124116.1668-1-mcsmonk@gmail.com/T/#u](https://lore.kernel.org/linux-mm/20200903124116.1668-1-mcsmonk@gmail.com/T/#u)
+```
+From: Dennis Zhou <dennis@kernel.org>
+To: Vlastimil Babka <vbabka@suse.cz>
+Cc: mcsmonk <mcsmonk@gmail.com>, linux-mm@kvack.org,
+	Mike Rapoport <rppt@linux.ibm.com>, Dennis Zhou <dennis@kernel.org>,
+	Tejun Heo <tj@kernel.org>
+Subject: Re: [PATCH] mm/percpu.c: Modify calculation of size of populated
+ bitmap of chunk for memory allocation
+Message-ID: <20200903154626.GA1665298@google.com>
+References: <20200903124116.1668-1-mcsmonk@gmail.com>
+ <a314b5ff-599f-b580-9bf2-e6c9b95183ea@suse.cz>
+...
+List-ID: <linux-mm.kvack.org>
+Archived-At: <https://lore.kernel.org/linux-mm/20200903154626.GA1665298@google.com/>
+List-Archive: <https://lore.kernel.org/linux-mm/>
+List-Post: <mailto:linux-mm@kvack.org>
+
+Hello Vlastimil and Sunghyun,
+
+On Thu, Sep 03, 2020 at 03:46:33PM +0200, Vlastimil Babka wrote:
+> On 9/3/20 2:41 PM, mcsmonk wrote:
+> From: Sunghyun Jin <mcsmonk@gmail.com>
+> 
+> Variable populated, which is a member of struct pcpu_chunk, is used as a
+> unit of size of unsigned long.
+> However, size of populated is miscounted. So, I fix this minor part.
+
+> +CC folks who touched it last
+
+Thanks for CCing me.
+
+> Nice find! Did you observe e.g. a panic that can be used in the commit log? Or
+> were we always lucky thanks to alignment?
+
+Well that is indeed awkward. Luckily the first chunk is a bit special
+and only holds 7 dynamic pages. Additionally, the allocation rounds to
+SMP_CACHE_BYTES so that would give us 8 bytes to play with as
+struct pcpu_chunk is 120 bytes. So, while technically (wrong) the
+1 byte was sufficient and the additional buffer is why at least I never
+got a panic report to today.
+
+> Is there perhaps a commit that introduced the bug and we can use it as Fixes:?
+> My brief look suggests 8ab16c43ea79 ("percpu: change the number of pages marked
+> in the first_chunk pop bitmap")
+
+That is the right commit. I'll pick this up and add the fixes line.
+
+> Thanks!
+
+Thanks,
+Dennis
+
+> > Signed-off-by: Sunghyun Jin <mcsmonk@gmail.com>
+> > ---
+> >  mm/percpu.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/mm/percpu.c b/mm/percpu.c
+> > index f4709629e6de..1ed1a349eab8 100644
+> > --- a/mm/percpu.c
+> > +++ b/mm/percpu.c
+> > @@ -1316,7 +1316,7 @@ static struct pcpu_chunk * __init pcpu_alloc_first_chunk(unsigned long tmp_addr,
+> >  
+> >  	/* allocate chunk */
+> >  	alloc_size = sizeof(struct pcpu_chunk) +
+> > -		BITS_TO_LONGS(region_size >> PAGE_SHIFT);
+> > +		BITS_TO_LONGS(region_size >> PAGE_SHIFT) * sizeof(unsigned long);
+> >  	chunk = memblock_alloc(alloc_size, SMP_CACHE_BYTES);
+> >  	if (!chunk)
+> >  		panic("%s: Failed to allocate %zu bytes\n", __func__,
+```
+
+- Updated 2020. Sep. 04
+    - 밤에 커밋하니까 미국 시간 업무 시간대라 빠르게 반응 옴
+    - 기술적으로 문제 없던 부분이라도 유의미해서인지 잘 반응해줌
