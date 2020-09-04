@@ -147,16 +147,6 @@ toc_label: "On this page"
 - 구글 2단계 인증으로 인한 문제 해결 방법
     - (구글 계정 - 보안 - 앱 비밀번호) 설정을 통해 만든 비밀번호 사용
 
-## 참고 사이트
-- Linux Kernel Official Doc
-    - [https://www.kernel.org/doc/html/latest/process/submitting-patches.html](https://www.kernel.org/doc/html/latest/process/submitting-patches.html)
-- [AustinKim](http://rousalome.egloos.com/)님의 커널 제출 방법
-    - [https://kldp.org/node/162104](https://kldp.org/node/162104)
-- KernelNewbies: Outreachyfirstpatch
-    - [https://kernelnewbies.org/Outreachyfirstpatch](https://kernelnewbies.org/Outreachyfirstpatch)
-- git send-email
-    - [https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9](https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9)
-
 
 
 # 첫 커널 패치 제출 시도 2 : 2020.09.03
@@ -412,3 +402,18 @@ Dennis
 - Updated 2020. Sep. 04
     - 밤에 커밋하니까 미국 시간 업무 시간대라 빠르게 반응 옴
     - 기술적으로 문제 없던 부분이라도 유의미해서인지 잘 반응해줌
+
+
+# 참고 사이트
+- Linux Kernel Official Doc
+    - [https://www.kernel.org/doc/html/latest/process/submitting-patches.html](https://www.kernel.org/doc/html/latest/process/submitting-patches.html)
+- [AustinKim](http://rousalome.egloos.com/)님의 커널 제출 방법
+    - [https://kldp.org/node/162104](https://kldp.org/node/162104)
+- [SeongJae Park](https://sjp38.github.io/ko/)님의 커널 제출 방법
+    - [https://dry-kiss.blogspot.com/2012/10/blog-post.html](https://dry-kiss.blogspot.com/2012/10/blog-post.html)
+- github 사이트에서 PR시 Linux KernelPRBot의 답장
+    - [https://github.com/ajdlinux/KernelPRBot/blob/master/message.md](https://github.com/ajdlinux/KernelPRBot/blob/master/message.md)
+- KernelNewbies: Outreachyfirstpatch
+    - [https://kernelnewbies.org/Outreachyfirstpatch](https://kernelnewbies.org/Outreachyfirstpatch)
+- git send-email
+    - [https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9](https://riptutorial.com/ko/git/example/16977/gmail%EC%97%90%EC%84%9C-git-send-email-%EC%82%AC%EC%9A%A9)
