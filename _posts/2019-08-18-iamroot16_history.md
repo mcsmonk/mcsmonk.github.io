@@ -43,9 +43,11 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 # Records
 
+<!--
 200912 - 61주차 - (+)명 - 
+-->
 
-200905 - 60주차 - (+)명 - 온라인
+200905 - 60주차 - 11명 - 온라인
 
 200829 - 59주차 - 9명 - 온라인 - 코로나로 인한 전체 화상 원격 회의 첫 시도
 
@@ -179,7 +181,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 # 스터디 진행 내용
 
-## 60주차
+<!--
+## 61주차
 > 요약  
 > 1. 진행사항
 >  - start_kernel (init/main.c)  
@@ -204,6 +207,43 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 5. etc
     - 
+-->
+
+## 60주차
+> 요약  
+> 1. 진행사항
+>  - start_kernel (init/main.c)  
+>    - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>        - set_my_cpu_offset (arch/arm64/include/asm/percpu.h)  
+>        -   
+>        -   
+>        -   
+>        -   
+>    -  ()  
+>        -   
+
+1. 정리
+    - 정리 필요 !
+
+참고
+0. Kernel patch commit message
+    - https://lore.kernel.org/patchwork/patch/680327/ : \[v2,1/4\] jump_label: remove bug.h, atomic.h dependencies for HAVE_JUMP_LABEL
+    - https://lore.kernel.org/linux-arm-kernel/20180919065144.25010-3-ard.biesheuvel@linaro.org/ : \[PATCH v3 2/9\] kernel/jump_label: implement generic support for relative references
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/atomic_t.txt
+    - https://www.kernel.org/doc/Documentation/core-api/atomic_ops.rst
+    - https://www.kernel.org/doc/Documentation/percpu-rw-semaphore.txt
+2. 문C블로그
+    - http://jake.dothome.co.kr/smp_prepare_boot_cpu/
+    - http://jake.dothome.co.kr/jump_label_init/
+    - http://jake.dothome.co.kr/rcu/
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Pointer-Arith.html
+4. ARM Doc
+    - 
+5. etc
+    - https://lwn.net/Articles/531148/ : Special sections in Linux binaries
+    - http://tomoyo.osdn.jp/cgi-bin/lxr/source/kernel/jump_label.c
 
 ## 59주차
 > 요약  
