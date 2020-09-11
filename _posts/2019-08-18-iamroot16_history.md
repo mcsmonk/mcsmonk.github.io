@@ -215,12 +215,19 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >  - start_kernel (init/main.c)  
 >    - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
 >        - set_my_cpu_offset (arch/arm64/include/asm/percpu.h)  
->        -   
->        -   
->        -   
->        -   
->    -  ()  
->        -   
+>        - jump_label_init (kernel/jump_label.c)  
+>          - cpus_read_lock (일단 생략)  
+>          - jump_label_lock  
+>          - jump_label_sort_entries  
+>            - sort (lib/sort.c)  
+>          - jump_label_type  
+>            - jump_entry_key (include/linux/jump_label.h)  
+>            - static_key_enabled  
+>              - static_key_count  
+>            - jump_entry_is_branch  
+>          - jump_entry_code  
+>          - init_section_contains (include/asm-generic/sections.h)  
+>            - memory_contains  
 
 1. 정리
     - 정리 필요 !
@@ -239,8 +246,6 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - http://jake.dothome.co.kr/rcu/
 3. GCC Doc
     - https://gcc.gnu.org/onlinedocs/gcc/Pointer-Arith.html
-4. ARM Doc
-    - 
 5. etc
     - https://lwn.net/Articles/531148/ : Special sections in Linux binaries
     - http://tomoyo.osdn.jp/cgi-bin/lxr/source/kernel/jump_label.c
