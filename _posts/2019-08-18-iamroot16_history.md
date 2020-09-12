@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-08-29T22:06:00
+last_modified_at: 2020-09-12T21:50:00
 
 toc: true
 toc_sticky: true
@@ -44,8 +44,10 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 # Records
 
 <!--
-200912 - 61주차 - (+)명 - 
+20 - 주차 - (+)명 - 
 -->
+
+200912 - 61주차 - 11명 - 온라인
 
 200905 - 60주차 - 11명 - 온라인
 
@@ -182,14 +184,13 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 # 스터디 진행 내용
 
 <!--
-## 61주차
+## 주차
 > 요약  
-> 1. 진행사항
->  - start_kernel (init/main.c)  
->    -  ()  
->        -   
->    -  ()  
->        -   
+>- start_kernel (init/main.c)  
+>  -  ()  
+>    -   
+>  -  ()  
+>    -   
 
 1. 정리
     - 
@@ -199,7 +200,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 1. Kernel Doc
     - 
-2. 문C블로그  
+2. 문C블로그
     - 
 3. GCC Doc
     - 
@@ -209,25 +210,46 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+## 61주차
+> 요약  
+>- start_kernel (init/main.c)  
+>  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>    - jump_label_init (kernel/jump_label.c)  
+>      - jump_entry_code  
+>      - init_section_contains (include/asm-generic/sections.h)  
+>        - memory_contains  
+>      - static_key_set_entries  
+>  
+>- static key 개념 및 동작 방법 이해
+
+참고
+0. Kernel patch commit message
+    - https://lore.kernel.org/lkml/20120222085809.GA26397@elte.hu/
+2. 문C블로그
+    - http://jake.dothome.co.kr/inline-assembly/
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
+
+
 ## 60주차
 > 요약  
 > 1. 진행사항
 >  - start_kernel (init/main.c)  
 >    - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
->        - set_my_cpu_offset (arch/arm64/include/asm/percpu.h)  
->        - jump_label_init (kernel/jump_label.c)  
->          - cpus_read_lock (일단 생략)  
->          - jump_label_lock  
->          - jump_label_sort_entries  
->            - sort (lib/sort.c)  
->          - jump_label_type  
->            - jump_entry_key (include/linux/jump_label.h)  
->            - static_key_enabled  
->              - static_key_count  
->            - jump_entry_is_branch  
->          - jump_entry_code  
->          - init_section_contains (include/asm-generic/sections.h)  
->            - memory_contains  
+>      - set_my_cpu_offset (arch/arm64/include/asm/percpu.h)  
+>      - jump_label_init (kernel/jump_label.c)  
+>        - cpus_read_lock (일단 생략)  
+>        - jump_label_lock  
+>        - jump_label_sort_entries  
+>          - sort (lib/sort.c)  
+>        - jump_label_type  
+>          - jump_entry_key (include/linux/jump_label.h)  
+>          - static_key_enabled  
+>            - static_key_count  
+>          - jump_entry_is_branch  
+>        - jump_entry_code  
+>        - init_section_contains (include/asm-generic/sections.h)  
+>          - memory_contains  
 
 1. 정리
     - 정리 필요 !
@@ -249,6 +271,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - https://lwn.net/Articles/531148/ : Special sections in Linux binaries
     - http://tomoyo.osdn.jp/cgi-bin/lxr/source/kernel/jump_label.c
+    - https://www.youtube.com/watch?v=a5kq0vbfmYQ : [TOT0Ro](https://tot0rokr.github.io/)님의 jump_label_init() 동작 설명 동영상
 
 ## 59주차
 > 요약  
@@ -273,7 +296,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 1. Kernel Doc
     - https://www.kernel.org/doc/Documentation/static-keys.txt
     - https://www.kernel.org/doc/Documentation/trace/tracepoints.txt
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/per-cpu/
     - http://jake.dothome.co.kr/jump_label_init/
     - http://jake.dothome.co.kr/static-keys/
@@ -300,7 +323,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >          - pcpu_chunk_relocate  
 
 참고
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/per-cpu/
     - http://jake.dothome.co.kr/setup_per_cpu_areas/
     - http://jake.dothome.co.kr/bit-operations/
@@ -362,7 +385,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
                 BITS_TO_LONGS(region_size >> PAGE_SHIFT),
                 0);
         ```
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/setup_nr_cpu_ids/
     - http://jake.dothome.co.kr/per-cpu/
 3. GCC Doc
@@ -398,7 +421,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://github.com/iamroot16/linux/commit/a530b7958612bafe2027e21359083dba84f0b3b4#diff-5050eed868076fe2656aea8c2eb7312a : percpu: teach large page allocator about NUMA
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/per-cpu/
     - http://jake.dothome.co.kr/setup_per_cpu_areas/
     - http://jake.dothome.co.kr/per-cpu-dynamic/
@@ -484,7 +507,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - https://github.com/torvalds/linux/commit/c1a2f7f0c06454387c2cd7b93ff1491c715a8c69 : mm: Allocate the mm_cpumask (mm->cpu_bitmap[]) dynamically based on n…
 1. Kernel Doc
     - /Documentation/arm64/booting.txt
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/smp_init_cpus/
     - http://jake.dothome.co.kr/dtb2/
     - http://jake.dothome.co.kr/per-cpu/
@@ -586,7 +609,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - https://www.kernel.org/doc/Documentation/locking/spinlocks.txt : rwreader-writer spinlocks
     - https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/psci.txt
     - /Documentation/devicetree/bindings/arm/cpus.yaml ; 소스 내의 파일을 볼 것
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/arm_memblock_init/
     - http://jake.dothome.co.kr/request_standard_resources/
     - http://jake.dothome.co.kr/tcm_init/
@@ -617,7 +640,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
       - 각 부분의 큰 그림 정리해가면서 진행 필요
 
 참고
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/barriers/
 5. etc
     - https://lwn.net/Articles/793253/#Store%20Tearing
@@ -647,7 +670,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://github.com/iamroot16/linux/commit/ec393a0f014eaf688a3dbe8c8a4cbb52d7f535f9 : mm: return zero_resv_unavail optimization
-2. 문C블로그  
+2. 문C블로그
     - http://jake.dothome.co.kr/sparsemem/
 
 ## 51주차
@@ -677,7 +700,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - https://github.com/iamroot16/linux/commit/e58469bafd0524e848c3733bc3918d854595e20f : mm: page_alloc: use word-based accesses for get/set pageblock bitmaps
 1. Kernel Doc
     - https://www.kernel.org/doc/Documentation/printk-formats.txt
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/mem_map/
     - http://jake.dothome.co.kr/sparsemem/
 3. etc
@@ -712,7 +735,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 0. Kernel patch commit message
     - https://lore.kernel.org/patchwork/patch/633557/ : mm/page_alloc.c: introduce kernelcore=mirror option
     - https://lore.kernel.org/patchwork/patch/342354/ : mm: provide more accurate estimation of pages occupied by memmap
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/sparsemem/
     - http://jake.dothome.co.kr/mem_map/
     - http://jake.dothome.co.kr/free_area_init_node/
@@ -737,7 +760,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://github.com/iamroot16/linux/commit/ec393a0f014eaf688a3dbe8c8a4cbb52d7f535f9 : mm: return zero_resv_unavail optimization
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/zone-types/
     - http://jake.dothome.co.kr/free_area_init_node/
 
@@ -761,7 +784,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 0. Kernel patch commit message
     - https://github.com/torvalds/linux/commit/342332e6a925e9ed015e5465062c38d2b86ec8f9 : mm/page_alloc.c: introduce kernelcore=mirror option
     - https://github.com/torvalds/linux/commit/a5c6d6509342785bef53bf9508e1842b303f1878 : mm, page_alloc: extend kernelcore and movablecore for percent
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/sparsemem/
     - http://jake.dothome.co.kr/bootmem_init-64/
     - http://jake.dothome.co.kr/free_area_init_node/
@@ -787,7 +810,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >                - pgd_populate (arch/arm64/include/asm/pgalloc.h)  
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/map64/
 
 ## 46주차
@@ -812,7 +835,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
       - memmap 크기 때문에 메모리 관리 및 속도 향상을 위해
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/bootmem_init-64/
     - http://jake.dothome.co.kr/sparsemem/
     - http://jake.dothome.co.kr/mem_map/
@@ -876,7 +899,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - https://github.com/torvalds/linux/commit/4a20799d11f64e6b8725cacc7619b1ae1dbf9acd : mm: move memtest under mm
 1. Kernel Doc
     - https://www.kernel.org/doc/Documentation/devicetree/bindings/numa.txt
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/bootmem_init-64/
     - http://jake.dothome.co.kr/kobject/
 3. etc
@@ -908,7 +931,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - of API : unflattened DT를 대상으로 동작
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/spinlock/
 3. etc
     - http://nimhaplz.egloos.com/5301468 : 스핀락
@@ -939,7 +962,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - unflatten_device_tree 에서 첫 함수인 __unflatten_device_tree 에서는 flatten 데이터를 트리 구조의 구조체에 포인터로 연결을 함
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/linux_kernel/linux_4/
     - http://jake.dothome.co.kr/setup_arch-64/
     - http://jake.dothome.co.kr/memblock-2/
@@ -983,7 +1006,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 0. Kernel patch commit message
     - https://patchwork.kernel.org/patch/9992927/
     - https://github.com/torvalds/linux/commit/50e1881ddde2a986c7d0d2150985239e5e3d7d96#diff-06e4e0038f65519bf8ab7562398c81be
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/map64/
     - http://jake.dothome.co.kr/static-keys/
     - http://jake.dothome.co.kr/cpu_replace_ttbr1/
@@ -1085,7 +1108,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     ```
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/map64/
     - http://jake.dothome.co.kr/pt64/
 2. iamroot 질답
@@ -1101,7 +1124,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >        - map_kernel_segment  
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/cma/
     - http://jake.dothome.co.kr/dma_contiguous_remap/
     - 
@@ -1124,7 +1147,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >          - cma_init_reserved_mem 진행 중  
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/arm64_memblock_init/
     - http://jake.dothome.co.kr/reserve_crashkernel/
 2. Kernel Doc  
@@ -1151,7 +1174,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >          - fdt_init_reserved_mem  
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/arm64_memblock_init/
 2. Kernel Doc  
     - https://www.kernel.org/doc/Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt
@@ -1213,7 +1236,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 참고
 0. Kernel patch commit message
     - https://www.kernel.org/doc/Documentation/efi-stub.txt
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/head-64/
     - http://jake.dothome.co.kr/cpu_replace_ttbr1/
 2. ARM® Doc  
@@ -1234,7 +1257,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 0. Kernel patch commit message
     - https://github.com/iamroot16/linux/commit/cdbc81ddef43c8fdcbd3a26e1a7530c70b629cfc#diff-66b5bf2ac9742f20c65e0b78e669dd77
     - https://patchwork.kernel.org/patch/2849665/
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/
     - http://jake.dothome.co.kr/ic/
 2. ARM® Doc
@@ -1259,7 +1282,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - d
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/parse_args/
     - http://jake.dothome.co.kr/earlycon/
 
@@ -1291,7 +1314,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >              - memblock_setclr_flag (mm/memblock.c)   
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/memblock-1/
     - http://jake.dothome.co.kr/memblock-2/
 2. partial address space mirroring
@@ -1320,7 +1343,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - dts,dtsi가 바이너리로 세팅되는 방법
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/dtb1/
     - http://jake.dothome.co.kr/dtb2/
     - http://jake.dothome.co.kr/dtb-fdt-api/
@@ -1405,7 +1428,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - Q. 대략 2M dt 에 대한 checksum 계산시 CRC32와 SHA 속도 차이?  
 
 참고
-1. 문C블로그  
+1. 문C블로그
     - http://jake.dothome.co.kr/fixmap/
     - http://jake.dothome.co.kr/memblock-1/
     - http://jake.dothome.co.kr/dtb1/
