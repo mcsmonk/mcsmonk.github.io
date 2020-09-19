@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-09-12T21:50:00
+last_modified_at: 2020-09-19T22:03:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+200919 - 62주차 - 9명 - 온라인
 
 200912 - 61주차 - 11명 - 온라인
 
@@ -210,6 +212,30 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+## 62주차
+> 요약  
+>- static-keys  
+>  - 관련 코드들  
+>  
+>- start_kernel (init/main.c)  
+>  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>    - cpuinfo_store_boot_cpu (arch/arm64/kernel/cpuinfo.c)  
+>      - __cpuinfo_store_cpu  
+>        - id_aa64pfr0_32bit_el0 (arch/arm64/kernel/cpufeature.h)  
+>        - id_aa64pfr0_sve (arch/arm64/kernel/cpufeature.h)  
+>        - cpuinfo_detect_icache_policy  
+>      - init_cpu_features (arch/arm64/kernel/cpufeature.c)  
+>        - sort_ftr_regs  
+>        - init_cpu_ftr_reg  
+>          - get_arm64_ftr_reg  
+
+참고
+2. 문C블로그
+    - http://jake.dothome.co.kr/smp_prepare_boot_cpu/
+    - http://jake.dothome.co.kr/cpucaps64/
+4. ARM Doc
+    - https://developer.arm.com/documentation/aeg0014/g/glossary -> RES0
+
 ## 61주차
 > 요약  
 >- start_kernel (init/main.c)  
@@ -229,7 +255,6 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - http://jake.dothome.co.kr/inline-assembly/
 3. GCC Doc
     - https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
-
 
 ## 60주차
 > 요약  
