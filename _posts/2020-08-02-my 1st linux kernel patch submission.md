@@ -404,6 +404,66 @@ Dennis
     - 밤에 커밋하니까 미국 시간 업무 시간대라 빠르게 반응 옴
     - 기술적으로 문제 없던 부분이라도 유의미해서인지 잘 반응해줌
 
+## 최종 결과 2020. Sep. 21
+```
+This is a note to let you know that I've just added the patch titled
+
+    percpu: fix first chunk size calculation for populated bitmap
+
+to the 5.8-stable tree which can be found at:
+    [http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary](http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary)
+
+The filename of the patch is:
+    percpu-fix-first-chunk-size-calculation-for-populated-bitmap.patch
+and it can be found in the queue-5.8 subdirectory.
+
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable@vger.kernel.org> know about it.
+
+
+From b3b33d3c43bbe0177d70653f4e889c78cc37f097 Mon Sep 17 00:00:00 2001
+From: Sunghyun Jin <mcsmonk@gmail.com>
+Date: Thu, 3 Sep 2020 21:41:16 +0900
+Subject: percpu: fix first chunk size calculation for populated bitmap
+
+From: Sunghyun Jin <mcsmonk@gmail.com>
+
+commit b3b33d3c43bbe0177d70653f4e889c78cc37f097 upstream.
+
+Variable populated, which is a member of struct pcpu_chunk, is used as a
+unit of size of unsigned long.
+However, size of populated is miscounted. So, I fix this minor part.
+
+Fixes: 8ab16c43ea79 ("percpu: change the number of pages marked in the first_chunk pop bitmap")
+Cc: <stable@vger.kernel.org> # 4.14+
+Signed-off-by: Sunghyun Jin <mcsmonk@gmail.com>
+Signed-off-by: Dennis Zhou <dennis@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+mm/percpu.c |    2 +-
+1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/mm/percpu.c
++++ b/mm/percpu.c
+@@ -1300,7 +1300,7 @@ static struct pcpu_chunk * __init pcpu_a
+
+        /* allocate chunk */
+        alloc_size = sizeof(struct pcpu_chunk) +
+-               BITS_TO_LONGS(region_size >> PAGE_SHIFT);
++               BITS_TO_LONGS(region_size >> PAGE_SHIFT) * sizeof(unsigned long);
+        chunk = memblock_alloc(alloc_size, SMP_CACHE_BYTES);
+        if (!chunk)
+                panic("%s: Failed to allocate %zu bytes\n", __func__,
+
+
+Patches currently in stable-queue which might be from mcsmonk@gmail.com are
+
+queue-5.8/percpu-fix-first-chunk-size-calculation-for-populated-bitmap.patch
+queue-5.4/percpu-fix-first-chunk-size-calculation-for-populated-bitmap.patch
+queue-4.19/percpu-fix-first-chunk-size-calculation-for-populated-bitmap.patch
+queue-4.14/percpu-fix-first-chunk-size-calculation-for-populated-bitmap.patch
+```
 
 # 참고 사이트
 - Linux Kernel Official Doc
