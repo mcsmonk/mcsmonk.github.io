@@ -13,7 +13,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-09-04T10:44:00
+last_modified_at: 2020-09-21T22:00:00
 
 toc: true
 toc_sticky: true
@@ -405,6 +405,7 @@ Dennis
     - 기술적으로 문제 없던 부분이라도 유의미해서인지 잘 반응해줌
 
 ## 최종 결과 2020. Sep. 21
+- [https://github.com/torvalds/linux/commit/b3b33d3c43bbe0177d70653f4e889c78cc37f097](https://github.com/torvalds/linux/commit/b3b33d3c43bbe0177d70653f4e889c78cc37f097)
 ```
 This is a note to let you know that I've just added the patch titled
 

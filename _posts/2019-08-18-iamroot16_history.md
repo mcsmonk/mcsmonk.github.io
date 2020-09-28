@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-09-19T22:03:00
+last_modified_at: 2020-09-26T22:03:00
 
 toc: true
 toc_sticky: true
@@ -47,6 +47,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 20 - 주차 - (+)명 - 
 -->
 
+200926 - 63주차 - (4+10)명 - 강남 이지스터디 + 온라인 참석
+
 200919 - 62주차 - 9명 - 온라인
 
 200912 - 61주차 - 11명 - 온라인
@@ -59,7 +61,7 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 200815 - 여름 휴가
 
-200808 - 58주차 - (11+1)명 - 강남 이지스터디
+200808 - 58주차 - (11+1)명 - 강남 이지스터디 + 온라인
 
 200801 - 57주차 - 15명 - 강남 이지스터디
 
@@ -73,17 +75,17 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 200627 - 52주차 - 14명 - 강남 이지스터디 - 문영일님 참석
 
-200620 - 51주차 - (11+1)명 - 강남 이지스터디
+200620 - 51주차 - (11+1)명 - 강남 이지스터디 + 온라인
 
 200613 - 50주차 - 13명 - 강남 이지스터디
 
-200606 - 49주차 - (11+2)명 - 강남 이지스터디
+200606 - 49주차 - (11+2)명 - 강남 이지스터디 + 온라인
 
-200530 - 48주차 - (13+1)명 - 강남 이지스터디
+200530 - 48주차 - (13+1)명 - 강남 이지스터디 + 온라인
 
 200523 - 47주차 - 13명 - 강남 이지스터디
 
-200516 - 46주차 - (12+1)명 - 강남 이지스터디
+200516 - 46주차 - (12+1)명 - 강남 이지스터디 + 온라인
 
 ~~200509 - 45주차 - (+)명 - 강남 이지스터디~~ - __친구 결혼식__
 
@@ -211,6 +213,53 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - 
 -->
+
+## 63주차
+> 요약  
+>- start_kernel (init/main.c)  
+>  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>    - cpuinfo_store_boot_cpu (arch/arm64/kernel/cpuinfo.c)  
+>      - init_cpu_features (arch/arm64/kernel/cpufeature.c)  
+>        - init_cpu_ftr_reg  
+>          - get_arm64_ftr_reg  
+>          - arm64_ftr_mask (arch/arm64/include/asm/cpufeature.h)  
+>          - arm64_ftr_value (arch/arm64/include/asm/cpufeature.h)  
+>          - arm64_ftr_set_value  
+>        - sve_init_vq_map  
+>        - init_cpu_hwcaps_indirect_list  
+>          - init_cpu_hwcaps_indirect_list_from_array  
+>        - setup_boot_cpu_capabilities  
+>          - update_cpu_capabilities  
+>          - enable_cpu_capabilities  
+>            - cpu_enable_non_boot_scope_capabilities  
+>            - stop_machine (kernel/stop_machine.c)  
+>              - stop_machine_cpuslocked  
+>                - set_state  
+>                - stop_cpus  
+>                - multi_cpu_stop  
+>    - apply_boot_alternatives (arch/arm64/kernel/alternative.c)  
+>      - __apply_alternatives  
+>        - patch_alternative  
+>          - get_alt_insn  
+
+참고
+0. Kernel patch commit message
+    - https://github.com/torvalds/linux/commit/3c739b57108436211c7f798ba3de0bb0cd8ef469 : arm64: Keep track of CPU feature registers
+    - https://github.com/torvalds/linux/commit/fe4fbdbcddeaab58a4f9b5297f28b8a4babf6f1f : arm64: cpufeature: Track user visible fields
+    - https://patchwork.kernel.org/patch/10706875/: arm64: capabilities: Speed up capability lookup
+1. Kernel Doc
+    - https://www.kernel.org/doc/html/latest/arm64/silicon-errata.html
+2. 문C블로그
+    - http://jake.dothome.co.kr/cpucaps64/
+    - http://jake.dothome.co.kr/alternative/
+3. GCC Doc
+    - https://gcc.gnu.org/onlinedocs/gcc/Designated-Inits.html
+4. ARM Doc
+    - https://developer.arm.com/architectures/instruction-sets/simd-isas
+    - https://developer.arm.com/documentation/dai0548/latest : SVE Programming Examples
+    - https://community.arm.com/developer/tools-software/oss-platforms/b/android-blog/posts/runtime-detection-of-cpu-features-on-an-armv8-a-cpu : Runtime detection of CPU features on an ARMv8-A CPU
+5. etc
+    - https://en.wikipedia.org/wiki/AArch64#Scalable_Vector_Extension_(SVE)
 
 ## 62주차
 > 요약  
