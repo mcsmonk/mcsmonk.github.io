@@ -3,7 +3,7 @@
 .footnote-button:active { opacity: 0.6; }
 .footnote-button.active { opacity: 0.9; -webkit-transition-delay: 0.15s; -moz-transition-delay: 0.15s; -ms-transition-delay: 0.15s; transition-delay: 0.15s; }
 
-.footnote-circle { display: inline-block; width: 0.32em; height: 0.32em; margin-right: 0.224em; border-radius: 100%; background-color: #464646; border: none; line-height: 0.5em; }
+.footnote-circle { display: inline-block; width: 0.32em; height: 0.32em; margin-right: 0.224em; border-radius: 100%; background-color: #e6e6e6; border: none; line-height: 0.5em; }
 .footnote-circle:last-child { margin-right: 0; }
 
 .footnote-content { position: fixed; z-index: 10; bottom: auto; left: auto; box-sizing: border-box; max-width: 90%; margin: 1.21924em auto; display: inline-block; -webkit-transform: scale(0.1) translateZ(0); -moz-transform: scale(0.1) translateZ(0); -ms-transform: scale(0.1) translateZ(0); transform: scale(0.1) translateZ(0); -webkit-transform-origin: 50% 0; -moz-transform-origin: 50% 0; -ms-transform-origin: 50% 0; transform-origin: 50% 0; background: #e6e6e6; opacity: 0; border-radius: 0.5em; border: 1px solid #c3c3c3; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3); -webkit-transition-property: opacity, -webkit-transform; -moz-transition-property: opacity, -moz-transform; -ms-transition-property: opacity, -ms-transform; transition-property: opacity, transform; -webkit-transition-duration: 0.25s; -moz-transition-duration: 0.25s; -ms-transition-duration: 0.25s; transition-duration: 0.25s; }
