@@ -41,7 +41,7 @@ comments:
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
   utterances:
-    theme                : "icy-dark" # "github-light" (default), "github-dark", "icy-dark"
+    theme                : "github-light" # "github-light" (default), "github-dark", "icy-dark"
     issue_term           : "pathname" # "pathname" (default)
     repo                 : "mcsmonk/blog-comments"
 staticman:
