@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-09-26T22:03:00
+last_modified_at: 2020-10-10T21:54:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201010 - 64주차 - (?+?)명 - 강남 모임플러스 + 온라인 참석 - 7시부터 참석
 
 200926 - 63주차 - (4+10)명 - 강남 이지스터디 + 온라인 참석
 
@@ -213,6 +215,30 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - 
 -->
+
+## 64주차
+> 요약  
+>- start_kernel (init/main.c)  
+>  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>    - apply_boot_alternatives (arch/arm64/kernel/alternative.c)  
+>    - system_uses_irq_prio_masking (arch/arm64/include/asm/cpufeature.h)  
+
+1. 정리
+    - 정리 필요 ...
+
+참고
+0. Kernel patch commit message
+    - 
+1. Kernel Doc
+    - 
+2. 문C블로그
+    - http://jake.dothome.co.kr/ic/
+3. GCC Doc
+    - 
+4. ARM Doc
+    - 
+5. etc
+    - https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/caches-and-self-modifying-code : Caches and Self-Modifying Code
 
 ## 63주차
 > 요약  
