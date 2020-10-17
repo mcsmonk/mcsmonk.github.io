@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-10-10T21:54:00
+last_modified_at: 2020-10-17T21:56:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201017 - 65주차 - (13?+2)명 - 강남 모임플러스 + 온라인 참석
 
 201010 - 64주차 - (?+?)명 - 강남 모임플러스 + 온라인 참석 - 7시부터 참석
 
@@ -216,27 +218,62 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+## 65주차
+> 요약  
+>- start_kernel (init/main.c)  
+>  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
+>    - init_gic_priority_masking (arch/arm64/kernel/smp.c)  
+>  - build_all_zonelists (mm/page_alloc.c)  
+>    - build_all_zonelists_init  
+>      - __build_all_zonelists  
+>        - build_zonelists  
+>          - find_next_best_node  
+>          - build_zonelists_in_node_order  
+>            - build_zonerefs_node  
+>              - managed_zone (include/linux/mmzone.h)  
+>                - zone_managed_pages  
+>              - zoneref_set_zone  
+>              - check_highest_zone (include/linux/mempolicy.h)  
+>          - build_thisnode_zonelists  
+>        - cpu_to_node  
+>        - local_memory_node  
+>          - node_zonelist (include/linux/gfp.h)  
+>          - gfp_zone  
+>          - first_zones_zonelist  
+>            - next_zones_zonelist  
+>              - __next_zones_zonelist  
+
+참고
+0. Kernel patch commit message
+    - https://patchwork.kernel.org/project/linux-arm-kernel/patch/1542023835-21446-16-git-send-email-julien.thierry@arm.com/ : arm64: Switch to PMR masking when starting CPUs
+    - https://gitlab.apertis.org/third-party/linux/commit/cff7d378d3fdbb53db9b6e2578b14855f401cd41 : cpu/hotplug: Convert to a state machine for the control processor
+    - https://lore.kernel.org/patchwork/patch/974406/ : cpu/hotplug: Boot HT siblings at least once
+    - https://github.com/torvalds/linux/commit/c9bff3eebc09be23fbc868f5e6731666d23cbea3#diff-d1793bdc2ce9e21814061bb882d0c3ac : mm, page_alloc: rip out ZONELIST_ORDER_ZONE
+1. Kernel Doc
+    - https://www.kernel.org/doc/html/latest/core-api/cpu_hotplug.html
+2. 문C블로그
+    - http://jake.dothome.co.kr/arm64-handler/
+    - http://jake.dothome.co.kr/build_all_zonelists/
+    - http://jake.dothome.co.kr/numa-1/
+    - http://jake.dothome.co.kr/zone-api/
+    - http://jake.dothome.co.kr/boot_cpu_init/
+5. etc
+    - https://blog.naver.com/seuis398/70140453358 : 리눅스 CPU 동적으로 ON/OFF 시키기 (CPU Hotplug)
+
 ## 64주차
 > 요약  
 >- start_kernel (init/main.c)  
 >  - smp_prepare_boot_cpu (arch/arm64/kernel/smp.c)  
 >    - apply_boot_alternatives (arch/arm64/kernel/alternative.c)  
 >    - system_uses_irq_prio_masking (arch/arm64/include/asm/cpufeature.h)  
+>    - init_gic_priority_masking (arch/arm64/kernel/smp.c)  
 
 1. 정리
     - 정리 필요 ...
 
 참고
-0. Kernel patch commit message
-    - 
-1. Kernel Doc
-    - 
 2. 문C블로그
     - http://jake.dothome.co.kr/ic/
-3. GCC Doc
-    - 
-4. ARM Doc
-    - 
 5. etc
     - https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/posts/caches-and-self-modifying-code : Caches and Self-Modifying Code
 
