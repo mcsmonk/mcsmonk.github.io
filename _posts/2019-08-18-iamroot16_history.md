@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-10-17T21:56:00
+last_modified_at: 2020-10-31T21:50:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,10 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201031 - 67주차 - (11+1)명 - 강남 모임플러스 + 온라인 참석
+
+~~201024 - 66주차 - (?+?)명 - 강남 모임플러스 + 온라인 참석~~ - __개인 사정 불참__
 
 201017 - 65주차 - (13?+2)명 - 강남 모임플러스 + 온라인 참석
 
@@ -218,6 +222,33 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+## 67주차
+> 요약  
+>- start_kernel (init/main.c)  
+>  - page_alloc_init (mm/page_alloc.c)  
+>    - page_alloc_cpu_dead  
+>      - lru_add_drain_cpu (mm/swap.c)  
+>        - __pagevec_lru_add  
+>          - __pagevec_lru_add_fn  
+>          - pagevec_lru_move_fn - 스탑  
+>- 2017-Mastering Linux Kernel Development  
+>  - ch4.Memory Management And Allocator (pp.95-123)
+
+1. 정리
+    - 원혁님 첫 커밋
+      - [https://lore.kernel.org/linux-mm/20201030201946.GA1061822@google.com/T/#t](https://lore.kernel.org/linux-mm/20201030201946.GA1061822@google.com/T/#t)
+    - Memory management 정리
+
+참고
+2. 문C블로그
+    - http://jake.dothome.co.kr/kboard/?mod=document&uid=26 : Q&A - Zone의 필요성에 대하여
+    - http://jake.dothome.co.kr/zonned-allocator-watermark/ : Zoned Allocator -6- (Watermark)
+    - http://jake.dothome.co.kr/per-cpu-page-frame-cache/ : Zoned Allocator -5- (Per-CPU Page Frame Cache)
+4. ARM Doc
+    - https://pages.arm.com/rs/312-SAX-488/images/Arm_Cortex_M_Book_2019_pdf_Oct19.pdf : System-on-Chip Design with Arm® Cortex® -M Processors
+5. etc
+    - 2017-Mastering Linux Kernel Development-ch4.Memory Management And Allocator
+
 ## 65주차
 > 요약  
 >- start_kernel (init/main.c)  
@@ -242,6 +273,9 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 >          - first_zones_zonelist  
 >            - next_zones_zonelist  
 >              - __next_zones_zonelist  
+
+1. 정리
+    - gfp(get free pages)
 
 참고
 0. Kernel patch commit message
