@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-10-31T21:50:00
+last_modified_at: 2020-11-07T21:58:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201107 - 68주차 - (10+1)명 - 강남 모임플러스 + 온라인 참석
 
 201031 - 67주차 - (11+1)명 - 강남 모임플러스 + 온라인 참석
 
@@ -221,6 +223,58 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - 
 -->
+
+## 68주차
+> 요약  
+>- 2017-Mastering Linux Kernel Development  
+>  - ch4.Memory Management And Allocator (pp.124-139)
+>  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c) <-- 분석하다가 중단  
+>      - get_page_from_freelist  
+>        - rmqueue  
+>          - __rmqueue_smallest <-- 분석 완료  
+>            - rmv_page_order
+>              - __ClearPageBuddy (include/linux/page-flags.h:716)  
+>            - expand  
+>              - set_page_guard  
+>              - set_page_order  
+>                - __SetPageBuddy (include/linux/page-flags.h:716)  
+
+1. 정리
+    - Memory management 정리
+        - page descriptor
+            - page frame
+            - page structure
+            - flag
+            - mapping
+        - Zones and nodes
+            - Memory zones
+                - DMA, DMA32, HIGHMEM, NORMAL, MOVABLE, DEVICE
+            - Memory nodes
+            - node descriptor structure
+            - zone descriptor structure
+        - memory allocator
+            - page frame allocator
+            - buddy system
+            - GFP mask
+            - slab allocator
+                - kmalloc cache
+                - object cache
+                - cache management
+                - slob -> slab -> slub
+
+참고
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/vm/numa_memory_policy.txt
+2. 문C블로그
+    - http://jake.dothome.co.kr/gfp-flag/ : GFP 플래그
+    - http://jake.dothome.co.kr/2019/07/ : NUMA -3- (Memory policy)
+5. etc
+    - https://events.static.linuxfound.org/sites/events/files/slides/slaballocators.pdf : Slab allocators in the Linux Kernel: SLAB, SLOB, SLUB
+    - http://studyfoss.egloos.com/5332580 : 동적 메모리 할당자 : slab, slub, slob
+    - https://12bme.tistory.com/537 : NUMA 메모리 관리 아키텍처
 
 ## 67주차
 > 요약  
