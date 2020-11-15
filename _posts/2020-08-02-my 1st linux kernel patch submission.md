@@ -406,6 +406,7 @@ Dennis
 
 ## 최종 결과 2020. Sep. 21
 - [https://github.com/torvalds/linux/commit/b3b33d3c43bbe0177d70653f4e889c78cc37f097](https://github.com/torvalds/linux/commit/b3b33d3c43bbe0177d70653f4e889c78cc37f097)
+
 ```
 This is a note to let you know that I've just added the patch titled
 

@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-11-07T21:58:00
+last_modified_at: 2020-11-15T16:21:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201114 - 69주차 - (8+3)명 - 강남 이지스터디
 
 201107 - 68주차 - (10+1)명 - 강남 모임플러스 + 온라인 참석
 
@@ -223,6 +225,30 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - 
 -->
+
+
+## 69주차
+> 요약  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c)
+>      - prepare_alloc_pages  
+>        - gfp_zone  
+>      - finalise_ac  
+>      - alloc_flags_nofragment  
+>      - get_page_from_freelist  
+>        - node_dirty_ok  
+>        - wmark_pages  
+>        - zone_watermark_fast  
+>          - __zone_watermark_ok  
+
+참고
+2. 문C블로그
+    - http://jake.dothome.co.kr/debug-mem-5/ : 디버그 메모리 -5- (Fault Injection)
+    - http://jake.dothome.co.kr/build_all_zonelists/ : build_all_zonelists()
+    - http://jake.dothome.co.kr/zonned-allocator-alloc-pages-fastpath/ : Zoned Allocator -1- (물리 페이지 할당-Fastpath)
+5. etc
+    - http://egloos.zum.com/studyfoss/v/5342153 : \[Linux\] lockdep: 런타임 락 의존성 검사
 
 ## 68주차
 > 요약  
