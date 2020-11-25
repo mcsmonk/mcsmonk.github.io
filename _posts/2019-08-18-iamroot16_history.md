@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-11-15T16:21:00
+last_modified_at: 2020-11-21T21:55:00
 
 toc: true
 toc_sticky: true
@@ -46,6 +46,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 <!--
 20 - 주차 - (+)명 - 
 -->
+
+201121 - 70주차 - (9+2)명 - 강남 모임플러스 + 온라인 참석
 
 201114 - 69주차 - (8+3)명 - 강남 이지스터디
 
@@ -226,6 +228,39 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+
+## 70주차
+> 요약  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c)  
+>      - get_page_from_freelist  
+>        - zone_watermark_fast  
+>          - __zone_watermark_ok  
+>        - zone_allows_reclaim 
+>        - node_reclaim (mm/vmscan.c) 
+>        - rmqueue  
+>          - rmqueue_pcplist  
+>            - __rmqueue_pcplist  
+>              - rmqueue_bulk  
+>          - __rmqueue_smallest  
+>          - __rmqueue  
+>            - __rmqueue_fallback  
+>              - find_suitable_fallback  
+>                - can_steal_fallback  
+>              - steal_suitable_fallback  
+>                - move_freepages_block  
+>                  - move_freepages  
+
+참고
+2. 문C블로그
+    - http://jake.dothome.co.kr/zonned-allocator-watermark/ : Zoned Allocator -6- (Watermark)
+    - http://jake.dothome.co.kr/zonned-allocator-alloc-pages-fastpath/ : Zoned Allocator -1- (물리 페이지 할당-Fastpath)
+    - http://jake.dothome.co.kr/build_all_zonelists/ : build_all_zonelists()
+    - http://jake.dothome.co.kr/buddy-alloc/ : Zonned Allocator -3- (Buddy 페이지 할당)
+    - http://jake.dothome.co.kr/sparsemem/ : Sparse Memory
+5. etc
+    - https://linuxplumbersconf.org/event/2/contributions/65/attachments/15/171/slides-expanded.pdf : The hard work behind large physical memory allocations in the kernel
 
 ## 69주차
 > 요약  
