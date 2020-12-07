@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-11-21T21:55:00
+last_modified_at: 2020-12-06T17:00:00
 
 toc: true
 toc_sticky: true
@@ -45,7 +45,13 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 
 <!--
 20 - 주차 - (+)명 - 
+201128 - 7주차 - (?+2?)명 - 강남 모임플러스 + 온라인 참석
+21 - 주차 - (+)명 - 
 -->
+
+201205 - 72주차 - (?+3?)명 - 강남 모임플러스 + 온라인 참석
+
+201128 - 71주차 - (?+2?)명 - 강남 모임플러스 + 온라인 참석
 
 201121 - 70주차 - (9+2)명 - 강남 모임플러스 + 온라인 참석
 
@@ -228,6 +234,57 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
     - 
 -->
 
+## 72주차
+> 요약  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c)  
+>      - get_page_from_freelist  
+>        - rmqueue  
+>          - __rmqueue  
+>          - mod_zone_freepage_state (include/linux/vmstat.h)  
+>            - __mod_zone_page_state (mm/vmstat.c)  
+>          - zone_statistics  
+>        - prep_new_page  
+>          - post_alloc_hook  
+>          - prep_compound_page  
+>        - reserve_highatomic_pageblock  
+>          - get_pageblock_migratetype (include/linux/mmzone.h)  
+
+참고
+2. 문C블로그
+    - http://jake.dothome.co.kr/cache4/ : Cache – Coherent
+    - http://jake.dothome.co.kr/zonned-allocator-watermark/ : Zoned Allocator -6- (Watermark)
+    - http://jake.dothome.co.kr/compound/ : Compound 페이지
+5. etc
+    - (책) 2011-A Primer on Memory Consistency and Cache Coherence
+    - https://sonseungha.tistory.com/488 : NUMA BALANCING
+    - https://jihooyim1.gitbooks.io/linuxbasic/content/contents/06.html : NUMA, 메모리 관리의 새로운 세계
+    - https://blog.naver.com/xowns4817/221182043348 : TLB(Translation Lookaside Buffer)
+    - https://www.spinics.net/lists/newbies/msg41159.html : Re: what is "compound_page()" all about?
+
+## 71주차
+> 요약  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c)  
+>      - get_page_from_freelist  
+>        - rmqueue  
+>          - __rmqueue  
+>          - mod_zone_freepage_state (include/linux/vmstat.h)  
+>            - __mod_zone_page_state  
+
+참고
+0. Kernel patch commit message
+    - https://github.com/iamroot16/linux/commit/4eb7dce62007113f1a2778213980fd6d8034ef5e : mm/page_alloc: factor out fallback freepage checking
+    - https://lore.kernel.org/linux-mm/20170307131545.28577-5-vbabka@suse.cz/ : mm, page_alloc: count movable pages when stealing from pageblock
+    - https://lkml.org/lkml/2017/2/10/582 : mm, page_alloc: split smallest stolen page in fallback
+2. 문C블로그
+    - http://jake.dothome.co.kr/zonned-allocator-alloc-pages-fastpath/ : Zoned Allocator -1- (물리 페이지 할당-Fastpath)
+5. etc
+    - https://tooson.tistory.com/2 : Memory Allocation Mechanism
+    - https://www.youtube.com/watch?v=mzT4QnCpef8 : LPC2018 - The hard work behind large physical allocations in the kernel
+    - https://lwn.net/Articles/348886/ : HWPOISON
 
 ## 70주차
 > 요약  
