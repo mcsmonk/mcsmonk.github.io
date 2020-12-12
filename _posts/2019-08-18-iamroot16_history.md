@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-12-06T17:00:00
+last_modified_at: 2020-12-12T20:00:00
 
 toc: true
 toc_sticky: true
@@ -48,6 +48,8 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 201128 - 7주차 - (?+2?)명 - 강남 모임플러스 + 온라인 참석
 21 - 주차 - (+)명 - 
 -->
+
+201212 - 73주차 - (?+?)명 - 강남 모임플러스 + 온라인 참석
 
 201205 - 72주차 - (?+3?)명 - 강남 모임플러스 + 온라인 참석
 
@@ -233,6 +235,43 @@ Iamroot 16차 Linux-Kernel-v5.1-arm64 스터디 기록용
 5. etc
     - 
 -->
+
+## 주차
+> 요약  
+>- alloc_pages (include/linux/gfp.h)  
+>  - alloc_pages_current (mm/mempolicy.c)  
+>    - __alloc_pages_nodemask (mm/page_alloc.c)  
+>      - current_gfp_context (include/linux/sched/mm.h)  
+>      - __alloc_pages_slowpath  
+>        - gfp_to_alloc_flags  
+>        - first_zones_zonelist  
+>        - wake_all_kswapds  
+>        - get_page_from_freelist  
+>        - gfp_pfmemalloc_allowed  
+>          - __gfp_pfmemalloc_flags  
+>        - __alloc_pages_direct_compact  
+>          - memalloc_noreclaim_save  
+>          - try_to_compact_pages  
+>          - compact_zone_order  
+>            - compact_zone  
+>              - compaction_suitable  
+>                - __compaction_suitable  
+>                  - is_via_compact_memory  
+>                  - wmark_pages  
+>                  - zone_watermark_ok  
+>                  - compact_gap  
+
+참고
+1. Kernel Doc
+    - https://www.kernel.org/doc/Documentation/accounting/psi.txt : PSI - Pressure Stall Information
+2. 문C블로그
+    - http://jake.dothome.co.kr/gfp-flag/ : GFP 플래그
+    - http://jake.dothome.co.kr/zonned-allocator-alloc-pages-fastpath/ : Zoned Allocator -1- (물리 페이지 할당-Fastpath)
+    - http://jake.dothome.co.kr/zonned-allocator-watermark/ : Zoned Allocator -6- (Watermark)
+5. etc
+    - https://lwn.net/Articles/224829/ : Short topics in memory management
+    - https://www.kernel.org/doc/gorman/html/understand/understand009.html : Chapter 6  Physical Page Allocation
+    - https://tooson.tistory.com/2 : Memory Allocation Mechanism
 
 ## 72주차
 > 요약  
