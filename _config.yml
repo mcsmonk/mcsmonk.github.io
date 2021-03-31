@@ -84,6 +84,9 @@ yandex_site_verification :
 naver_site_verification  : "naver1bfcadbeb5d25ed63a3a09e27e7da9ae"
 
 # Social Sharing
+github:
+  username               : "mcsmonk"
+  repository             : "mcsmonk.github.io"
 twitter:
   username               : "nginsngin"
 facebook:

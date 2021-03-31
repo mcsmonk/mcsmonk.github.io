@@ -8,8 +8,10 @@ main:
     url: /categories/
   - title: "Tag"
     url: /tags/
-  - title: Iamroot16 History
-    url: /iamroot16/
+  - title: "Deadlines"
+    url: /deadlines/
+  #- title: Iamroot16 History
+  #  url: /iamroot16/
   #- title: "Quick-Start Guide"
   #  url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "About"
