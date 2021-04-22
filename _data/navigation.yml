@@ -2,12 +2,14 @@
 main:
   - title: "Home"
     url: /
-  - title: "About"
-    url: /about/
+  - title: "CV"
+    url: /cv/
   - title: "Category"
     url: /categories/
   - title: "Tag"
     url: /tags/
+  - title: "Schedules"
+    url: /schedules/
   - title: "Deadlines"
     url: /deadlines/
   #- title: Iamroot16 History
