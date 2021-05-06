@@ -67,7 +67,7 @@ print(plaintext)
 ``` python
 import requests
 r = requests.get('http://www.pythonchallenge.com/pc/def/ocr.html')
-r2 = r.split('<!--\n')
+r2 = r.text.split('<!--\n')
 r3 = r2[-1].split('-->')
 r4 = r3[0].split('\n')
 r5 = ''.join(r4[0:-1])
@@ -89,16 +89,63 @@ for i in r7:
 r8 = sorted(r8, key=lambda key: key[1])
 
 'http://www.pythonchallenge.com/pc/def/{}.html'.format(''.join([i[0] for i in r8]))
-#'http://www.pythonchallenge.com/pc/def/equality.html'
+# http://www.pythonchallenge.com/pc/def/equality.html
 ```
 
 ## level 3
 - Problem
 	- [http://www.pythonchallenge.com/pc/def/equality.html](http://www.pythonchallenge.com/pc/def/equality.html)
 - Solution
-	- date : 2021-05-xx
+	- date : 2021-05-06
+``` python
+import requests
+r = requests.get('http://www.pythonchallenge.com/pc/def/equality.html')
+r2 = r.text.split('<!--\n')
+r3 = r2[-1].split('-->')
+r4 = r3[0].split('\n')
+r5 = ''.join(r4[0:-1])
+
+import re
+p = re.compile('[^A-Z][A-Z]{3}[a-z][A-Z]{3}[^A-Z]')
+sl = [i[4] for i in p.findall(r5)]
+
+'http://www.pythonchallenge.com/pc/def/{}.html'.format(''.join(sl))
+# http://www.pythonchallenge.com/pc/def/linkedlist.html
+```
+
+## level 4
+- Problem
+	- [http://www.pythonchallenge.com/pc/def/linkedlist.php](http://www.pythonchallenge.com/pc/def/linkedlist.php)
+- Solution
+	- date : 2021-05-06
+``` python
+
+import requests
+urlphp = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
+
+numstr = '12345'
+while True:
+	url = urlphp + numstr
+	print('Try :', url, end=' : ')
+	r = requests.get(url)
+	numstr = r.text.split()[-1]
+	print(numstr)
+	if 'html' in numstr:
+		break
+
+'http://www.pythonchallenge.com/pc/def/{}'.format(numstr)
+# http://www.pythonchallenge.com/pc/def/peak.html
+```
+
+## level 5
+- Problem
+	- [http://www.pythonchallenge.com/pc/def/peak.html](http://www.pythonchallenge.com/pc/def/peak.html)
+- Solution
+	- date : 2021-05-06
 ``` python
 ```
+
+
 
 
 
@@ -106,9 +153,9 @@ r8 = sorted(r8, key=lambda key: key[1])
 
 ## level 
 - Problem
-	- [http://www.pythonchallenge.com/pc/def/equality.html](http://www.pythonchallenge.com/pc/def/equality.html)
+	- []()
 - Solution
-	- date : 2021-05-05
+	- date : 2021-05-06
 ``` python
 ```
 --->
