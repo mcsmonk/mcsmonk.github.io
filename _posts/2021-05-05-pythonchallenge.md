@@ -123,8 +123,14 @@ sl = [i[4] for i in p.findall(r5)]
 import requests
 urlphp = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
 
+
 numstr = '12345'
+numl = []
 while True:
+	if numstr.isdigit():
+		num = int(numstr,10)
+		if num not in numl:
+			numl.append(num)
 	url = urlphp + numstr
 	print('Try :', url, end=' : ')
 	r = requests.get(url)
@@ -132,6 +138,11 @@ while True:
 	print(numstr)
 	if 'html' in numstr:
 		break
+	if numstr.isdigit():
+		num = int(numstr,10)
+		if num in numl:
+			break
+
 
 'http://www.pythonchallenge.com/pc/def/{}'.format(numstr)
 # http://www.pythonchallenge.com/pc/def/peak.html
