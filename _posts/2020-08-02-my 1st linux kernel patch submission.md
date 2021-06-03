@@ -32,7 +32,7 @@ toc_label: "On this page"
 ## 과정
 - [iamroot16](https://github.com/iamroot16/linux) 스터디 진행 중에 버그 발견
     - percpu 관련 함수인 pcpu_alloc_first_chunk 함수에서 메모리 할당을 위한 사이즈 계산시 아래 부분에 관련한 버그 존재
-    ``` C
+    ```
     // in mm/percpu.c
     1104         /* allocate chunk */
     1105         alloc_size = sizeof(struct pcpu_chunk) +
@@ -53,7 +53,7 @@ toc_label: "On this page"
 - 언제 제출해볼 기회가 생길지 몰라서 커널 패치 제출 방법에 대해 자세히 알아보지 않았는데 갑자기 해보고 싶어져 마음만 급했던 상황
 - [AustinKim](http://rousalome.egloos.com/)님의 [글](https://kldp.org/node/162104)을 참고하였지만 마지막에 구글 2단계 인증으로 인해 마지막 제출 부분에 문제를 겪었음
     1. 커널 패치 제출물 준비
-        ``` BASH
+        ```
         $ git add ./mm/percpu.c
         $ git commit -m 'mm/percpu.c: Modify size of populated bitmap of chunk for memory allocation'
         $ git commit --amend --author="Sunghyun Jin <mcsmonk@gmail.com>"
@@ -84,7 +84,7 @@ toc_label: "On this page"
     4. 커널 패치 제출 2020.08.02 시도
         - 구글 2단계 인증 때문에 mutt으로 계속 실패해서 git send-email로 시도함
 
-        ``` BASH
+        ```
         $ sudo apt-get install git-email
         $ git send-email --annotate HEAD^
         $ git send-email head^
@@ -156,7 +156,7 @@ toc_label: "On this page"
 [SeongJae Park](https://sjp38.github.io/ko/)님의 커널 패치 제출에 대한 다른 글[link](https://dry-kiss.blogspot.com/2012/10/blog-post.html)을 참고하여 다시 제출
 
 ## 과정
-``` BASH
+```
 $ git commit -m 'mm/percpu.c: Modify calculation of size of populated bitmap of chunk for memory allocation'
 [master 067d96099555] mm/percpu.c: Modify calculation of size of populated bitmap of chunk for memory allocation
  1 file changed, 1 insertion(+), 1 deletion(-)
