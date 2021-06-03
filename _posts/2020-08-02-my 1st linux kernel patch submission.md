@@ -68,14 +68,14 @@ toc_label: "On this page"
         $ git format-patch -o /tmp/ head^
         ```
     2. 커널 패치 제출물 컨벤션 검사
-        ``` BASH
+        ```
         $ ./scripts/checkpatch.pl ./0001-mm-percpu.c-Modify-size-of-populated-bitmap-of-chunk.patch
         total: 0 errors, 0 warnings, 8 lines checked
 
         ./0001-mm-percpu.c-Modify-size-of-populated-bitmap-of-chunk.patch has no obvious style problems and is ready for submission.
         ```
     3. 관련 메인테이너 확인
-        ``` BASH
+        ```
         $ git show HEAD | perl scripts/get_maintainer.pl --separator , --nokeywords --nogit --nogit-fallback --norolestats --nol
         Dennis Zhou <dennis@kernel.org>,Tejun Heo <tj@kernel.org>,Christoph Lameter <cl@linux.com>,Andrew Morton <akpm@linux-foundation.org>
         $ perl scripts/get_maintainer.pl --separator , --nokeywords --nogit --nogit-fallback --norolestats --nol -f ./mm/percpu.c
