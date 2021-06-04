@@ -1,6 +1,6 @@
 ---
-title:  "Test : ipybn in ghpages"
-#excerpt: "test-ghpages-ipynb"
+title:  "[Test] post jupyter notebook in github page"
+#excerpt: "test-post-ipynb-in-ghpage"
 
 categories:
   - notebook
@@ -11,10 +11,18 @@ last_modified_at: 2021-06-04T12:30:00
 
 published: true
 
-#toc: true
-#toc_sticky: true
-#toc_label: "On this page"
+toc: true
+toc_sticky: true
+toc_label: "On this page"
 ---
+Reference : https://jungsooyun.github.io/notebook/post-with-jupyter/
+
+# markdown test header1 A
+
+## markdown test header2 A
+
+## markdown test header2 B
+
 <div class="prompt input_prompt">
 In&nbsp;[1]:
 </div>
@@ -40,6 +48,7 @@ In&nbsp;[2]:
 <div class="input_area" markdown="1">
 
 ```python
+print('hello ghpages')
 print('Reference : https://jungsooyun.github.io/notebook/post-with-jupyter/')
 ```
 
@@ -48,6 +57,7 @@ print('Reference : https://jungsooyun.github.io/notebook/post-with-jupyter/')
 {:.output_stream}
 
 ```
+hello ghpages
 Reference : https://jungsooyun.github.io/notebook/post-with-jupyter/
 
 ```
@@ -128,14 +138,8 @@ plt.show()
 </div>
 
 
-<div class="prompt input_prompt">
-In&nbsp;[None]:
-</div>
+# markdown test header1 B
 
-<div class="input_area" markdown="1">
+## markdown test header2 C
 
-```python
-
-```
-
-</div>
+## markdown test header2 D
