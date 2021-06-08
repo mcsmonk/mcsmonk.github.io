@@ -1,13 +1,13 @@
 ---
-title:  "[Memo] Reference for Writing"
+title:  "[Memo] Reference for Academic Life"
 #excerpt: ""
 
 categories:
-  - Memo
+  - memo
 tags:
-  - Memo
-  - Reference
-  - Writing
+  - memo
+  - reference
+  - writing
   
 last_modified_at: 2021-06-08T12:30:00
 
@@ -23,6 +23,7 @@ toc_label: "On this page"
 \[ [pdf](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/How-to-write-a-great-research-paper.pdf) , [ppt](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/How-to-write-a-great-research-paper.pptx) \]
   - Author : Simon Peyton Jones, Microsoft
   - [https://www.microsoft.com/en-us/research/academic-program/write-great-research-paper/](https://www.microsoft.com/en-us/research/academic-program/write-great-research-paper/)
-  - {% youtube VK51E3gHENc %}
   - Accessed on: June 08, 2021.
+{% youtube VK51E3gHENc %}
+{% pdf "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/How-to-write-a-great-research-paper.pptx" %}
 
