@@ -24,6 +24,4 @@ toc_label: "On this page"
   - Author : Simon Peyton Jones, Microsoft
   - [https://www.microsoft.com/en-us/research/academic-program/write-great-research-paper/](https://www.microsoft.com/en-us/research/academic-program/write-great-research-paper/)
   - Accessed on: June 08, 2021.
-{% include video id="VK51E3gHENc" provider="youtube" %}
-{% pdf "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/How-to-write-a-great-research-paper.pptx" %}
 
