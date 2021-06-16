@@ -7,7 +7,7 @@ tags:
     - study
     - python
 
-last_modified_at: 2021-05-05T20:00:00
+last_modified_at: 2021-05-05T20:00:00+09:00
 
 published: false
 

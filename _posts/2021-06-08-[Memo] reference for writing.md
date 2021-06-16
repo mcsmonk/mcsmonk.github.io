@@ -9,7 +9,7 @@ tags:
   - reference
   - writing
   
-last_modified_at: 2021-06-08T12:30:00
+last_modified_at: 2021-06-08T12:30:00+09:00
 
 published: true
 

@@ -15,7 +15,7 @@ tags:
     - linux
     - kernel
 
-last_modified_at: 2020-12-12T20:00:00
+last_modified_at: 2020-12-12T20:00:00+09:00
 
 published: true
 

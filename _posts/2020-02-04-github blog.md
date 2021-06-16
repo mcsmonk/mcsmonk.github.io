@@ -9,7 +9,7 @@ tags:
   - blog
   - github
   - jekyll
-last_modified_at: 2020-02-21T18:30:00
+last_modified_at: 2020-02-21T18:30:00+09:00
 
 published: true
 
