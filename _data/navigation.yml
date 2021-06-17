@@ -12,6 +12,8 @@ main:
     url: /schedules/
   - title: "Deadlines"
     url: /deadlines/
+  - title: "Links"
+    url: /links/
   #- title: Iamroot16 History
   #  url: /iamroot16/
   #- title: "Quick-Start Guide"
