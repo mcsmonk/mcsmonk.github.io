@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://mcsmonk.github.io/</loc>
+  <lastmod>2021-08-24T01:56:09+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/cv/</loc>
+  <lastmod>2021-08-24T01:54:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/pages/schedules.html</loc>
+  <lastmod>2021-08-24T01:56:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/deadlines/</loc>
+  <lastmod>2021-07-03T08:50:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/categories/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/tags/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/links/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/memo/Memo-reference-for-writing/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/notebook/test-post-ipynb-in-ghpage/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/study/my-1st-linux-kernel-patch-submission/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/blog/github-blog/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/blog/pictures-2019/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/page2/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://mcsmonk.github.io/blog/iamroot16/</loc>
+  <lastmod>2021-08-14T09:17:42+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
