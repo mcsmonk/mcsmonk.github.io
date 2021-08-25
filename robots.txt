@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mcsmonk.github.io/
+Sitemap: https://mcsmonk.github.io/sitemap.xml
