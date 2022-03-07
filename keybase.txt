@@ -1,0 +1,62 @@
+==================================================================
+https://keybase.io/mcsmonk
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mcsmonk.github.io
+  * I am mcsmonk (https://keybase.io/mcsmonk) on keybase.
+  * I have a public key with fingerprint DC58 23C3 9AB5 65EC 76BC  BE98 235F 106F 72D7 2E45
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012057e839b3e50addacd6f4817e48d2f02330b12f33f2ce9180955500c5941980820a",
+      "fingerprint": "dc5823c39ab565ec76bcbe98235f106f72d72e45",
+      "host": "keybase.io",
+      "key_id": "235f106f72d72e45",
+      "kid": "011620e5109e3aba3f312588d287688c71a65f2db8671e1c5a9715bc0b7f0b360a970a",
+      "uid": "7ec2cdf551a81060d18a1e8596b88319",
+      "username": "mcsmonk"
+    },
+    "service": {
+      "hostname": "mcsmonk.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1646621341,
+  "expire_in": 157680000,
+  "prev": "0e7ffa1786ebaa1a2f0eb6c22f56b2ed1fc84696b0254cb057e5e13bbfa28e59",
+  "seqno": 35,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owFtUj1rFUEU3WgCGhWCQjoFJwgW4TEfOx/7mlSKjb1G5Dkfd16WJLvP3X0vJiFg
+o9gIwUI0lfgHxCLYiAhaRAQFi4hgmUKDjYUiFuLM0xSC0wz3zrnnnnPnrh/ZnxyY
+nOpMlNX71pmR159NYk5Vj1aRKd0yaq+ieRhesOCgbjrzuUNthAnFXIJimWHAsXZO
+Wyd8qoiEVDnqMWUMG0I9Y55ayIjCGeccY8uzlGQKK4o1mkY+L7pQ9aq8aAKts1xR
+ZlmmDRccrBTGGshCjnuChZfUSQopD4VzZR0rgjija2jlZciFoDOU9x/8nm4iKAZO
+cAZMG808I5SroFhJoZSVRAvuqTNKSALEcp1Jwo3FRnpsmMAhHuruD+kkWGqd55xo
+FfphR5QmoHgmjFKMZBFYQ1XoRQjoRVsvlsU8WptGITnILcS5RiP/AlrdvJnrmz+e
+elXZlLZcCM9zTdOr27G8We5F/BKYzl+mjskLF2YZKgZQ1XlZoDYJSNvkkZqIVAhK
+WEqmEVzr5RV08ojgwTUOJ/aBQRwQyMveayKVAKM10eErwQhLqefCUHDEW5WKYBBT
+nloTt4ADYcZ4TRXwaLmGq0WJ2owHobobSOu8W+imXwFaG7/VH00mDyTHJ0+Ofrww
+9WJjE74Mnj67t7d/Y/vi8iXjByf2Mh8uJb9m2E7r5ebF2RM33h66vnZzp14fO7+9
+e3f74ZMHrwanN2ZGkh+Pb387d+X+ytndd8fg+6efX0dX3mwtWfd8c7a+s3X08G8=
+=euOx
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mcsmonk
+
+==================================================================
