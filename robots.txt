@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sunghyunjin.com/sitemap.xml
+Sitemap: https://sunghyunjin.com/blogwiki/sitemap.xml
